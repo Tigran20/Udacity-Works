@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SpaceQuiz</string>
+    <string name="score_0">Score: 0</string>
+    <string name="button">Button</string>
+    <string name="score">Score:</string>
+
+    <string name="question_1">What is the sixth planet from the sun ?</string>
+    <string name="question_2">"The first satellite in space ?"</string>
+    <string name="question_3">"What is the first planet from the sun ?"</string>
+    <string name="question_4">"What is the hottest planet in the Solar system ?"</string>
+    <string name="question_5">"What is the second planet from the sun ?"</string>
+    <string name="question_6">"What is the official name of the planet 2003 UB313 ?"</string>
+    <string name="question_7">"Which planet is tilted on its side?"</string>
+    <string name="question_8">"What is the third planet from the sun ?"</string>
+    <string name="question_9">"Which planet has the fastest winds in the solar system? ?"</string>
+    <string name="question_10">"Which planet has the shortest day ?"</string>
+
+
+    <string name="choice_1">Saturn</string>
+    <string name="choice_2">Mars</string>
+    <string name="choice_3">Venus</string>
+    <string name="choice_4">Pluto</string>
+
+    <string name="choice_1_2">"Azur"</string>
+    <string name="choice_2_2">"Sputnik I"</string>
+    <string name="choice_3_2">"Asterix"</string>
+    <string name="choice_4_2">"Explorer-I"</string>
+
+    <string name="choice_1_3">"Mercury"</string>
+    <string name="choice_2_3">"Earth"</string>
+    <string name="choice_3_3">"Saturn"</string>
+    <string name="choice_4_3">"Venus"</string>
+
+    <string name="choice_1_4">"Mars"</string>
+    <string name="choice_2_4">"Venus"</string>
+    <string name="choice_3_4">"Mercury"</string>
+    <string name="choice_4_4">"Saturn"</string>
+
+    <string name="choice_1_5">"Uranus"</string>
+    <string name="choice_2_5">"Earth"</string>
+    <string name="choice_3_5">"Mars"</string>
+    <string name="choice_4_5">"Venus"</string>
+
+    <string name="choice_1_6">"Aida"</string>
+    <string name="choice_2_6">"Eris"</string>
+    <string name="choice_3_6">"Ersa"</string>
+    <string name="choice_4_6">"Earth"</string>
+
+    <string name="choice_1_7">"Uranus"</string>
+    <string name="choice_2_7">"Venus"</string>
+    <string name="choice_3_7">"Neptune"</string>
+    <string name="choice_4_7">"Pluto"</string>
+
+    <string name="choice_1_8">"Earth"</string>
+    <string name="choice_2_8">"Venus"</string>
+    <string name="choice_3_8">"Mars"</string>
+    <string name="choice_4_8">"Mercury"</string>
+
+    <string name="choice_1_9">"Saturn"</string>
+    <string name="choice_2_9">"Ersa"</string>
+    <string name="choice_3_9">"Uranus"</string>
+    <string name="choice_4_9">"Neptune"</string>
+
+    <string name="choice_1_10">"Jupiter"</string>
+    <string name="choice_2_10">"Deimos"</string>
+    <string name="choice_3_10">"IO"</string>
+    <string name="choice_4_10">"Mercury"</string>
+
+
+    <string name="answer_1">Saturn</string>
+    <string name="answer_2">Sputnik I</string>
+    <string name="answer_3">Mercury</string>
+    <string name="answer_4">Venus</string>
+    <string name="answer_5">Venus</string>
+    <string name="answer_6">Eris</string>
+    <string name="answer_7">Uranus</string>
+    <string name="answer_8">Earth</string>
+    <string name="answer_9">Neptune</string>
+    <string name="answer_10">Jupiter</string>
+
+    <string name="game_over">"Game over! "</string>
+    <string name="game_win">"Game win! "</string>
+    <string name="your_score">"Your score is "</string>
+    <string name="points"> points </string>
+    <string name="exit">Exit</string>
+    <string name="new_game">New game</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="exit_question">Do you really want to quit ?</string>
+
+</resources>

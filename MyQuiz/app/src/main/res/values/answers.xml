@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="answers">
+        <item>@string/answer_1</item>
+        <item>@string/answer_2</item>
+        <item>@string/answer_3</item>
+        <item>@string/answer_4</item>
+        <item>@string/answer_5</item>
+        <item>@string/answer_6</item>
+        <item>@string/answer_7</item>
+        <item>@string/answer_8</item>
+        <item>@string/answer_9</item>
+        <item>@string/answer_10</item>
+    </array>
+</resources>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">SpaceQuiz</string>
+    <string name="score">Счет:</string>
+    <string name="score_0">Счет: 0</string>
+    <string name="button">Кнопка</string>
+
+    <string name="question_1">Шестая планета Солнечной системы ?</string>
+    <string name="question_2">Первый искусственный спутник ?</string>
+    <string name="question_3">Первая планета Солнечной системы ?"</string>
+    <string name="question_4">Самая горячая планета Солнечной системы ?"</string>
+    <string name="question_5">Вторая планета от Солнца ?"</string>
+    <string name="question_6">Какое официальное название планеты 2003 UB313?"</string>
+    <string name="question_7">"Какая планета наклонена на бок?"</string>
+    <string name="question_8">"Третья планета Солнечной системы ?"</string>
+    <string name="question_9">"Какая планета имеет самые быстрые ветры в Солнечной системе?"</string>
+    <string name="question_10">"На какой планете самый короткий день?"</string>
+
+    <string name="choice_1">Сатурн</string>
+    <string name="choice_2">Марс</string>
+    <string name="choice_3">Венера</string>
+    <string name="choice_4">Плутон</string>
+
+    <string name="choice_1_2">"Азур"</string>
+    <string name="choice_2_2">"Спутник I"</string>
+    <string name="choice_3_2">"Астерикс"</string>
+    <string name="choice_4_2">"Эксплорер-I"</string>
+
+    <string name="choice_1_3">"Меркурий"</string>
+    <string name="choice_2_3">"Земля"</string>
+    <string name="choice_3_3">"Сатурн"</string>
+    <string name="choice_4_3">"Венера"</string>
+
+    <string name="choice_1_4">"Марс"</string>
+    <string name="choice_2_4">"Венера"</string>
+    <string name="choice_3_4">"Меркурий"</string>
+    <string name="choice_4_4">"Сатурн"</string>
+
+    <string name="choice_1_5">"Уран"</string>
+    <string name="choice_2_5">"Земля"</string>
+    <string name="choice_3_5">"Марс"</string>
+    <string name="choice_4_5">"Венера"</string>
+
+    <string name="choice_1_6">"Аида"</string>
+    <string name="choice_2_6">"Эрида"</string>
+    <string name="choice_3_6">"Эрса"</string>
+    <string name="choice_4_6">"Земля"</string>
+
+    <string name="choice_1_7">"Уран"</string>
+    <string name="choice_2_7">"Венера"</string>
+    <string name="choice_3_7">"Нептун"</string>
+    <string name="choice_4_7">"Плутон"</string>
+
+    <string name="choice_1_8">"Земля"</string>
+    <string name="choice_2_8">"Венера"</string>
+    <string name="choice_3_8">"Марс"</string>
+    <string name="choice_4_8">"Меркурий"</string>
+
+    <string name="choice_1_9">"Сатурн"</string>
+    <string name="choice_2_9">"Эрса"</string>
+    <string name="choice_3_9">"Уран"</string>
+    <string name="choice_4_9">"Нептун"</string>
+
+    <string name="choice_1_10">"Юпитер"</string>
+    <string name="choice_2_10">"Деймос"</string>
+    <string name="choice_3_10">"ИО"</string>
+    <string name="choice_4_10">"Меркурий"</string>
+
+    <string name="answer_1">Сатурн</string>
+    <string name="answer_2">Спутник I</string>
+    <string name="answer_3">Меркурий</string>
+    <string name="answer_4">Венера</string>
+    <string name="answer_5">Венера</string>
+    <string name="answer_6">Эрида</string>
+    <string name="answer_7">Уран</string>
+    <string name="answer_8">Земля</string>
+    <string name="answer_9">Нептун</string>
+    <string name="answer_10">Юпитер</string>
+
+    <string name="game_over">"Игра окончена! "</string>
+    <string name="your_score">"Ваш счет "</string>
+    <string name="points">очк.</string>
+    <string name="exit">Выход</string>
+    <string name="new_game">Новая игра</string>
+    <string name="game_win">"Победа! "</string>
+    <string name="yes">Да</string>
+    <string name="no">Нет</string>
+    <string name="exit_question">Вы действительно хотите выйти ?</string>
+</resources>
