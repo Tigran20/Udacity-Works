@@ -3,7 +3,7 @@
     <string name="app_name">SpaceQuiz</string>
     <string name="score_0">Score: 0</string>
     <string name="button">Button</string>
-    <string name="score">Score:</string>
+    <string name="score">Score: </string>
 
     <string name="question_1">What is the sixth planet from the sun ?</string>
     <string name="question_2">"The first satellite in space ?"</string>
@@ -88,5 +88,6 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="exit_question">Do you really want to quit ?</string>
+    <string name="space">" "</string> />
 
 </resources>

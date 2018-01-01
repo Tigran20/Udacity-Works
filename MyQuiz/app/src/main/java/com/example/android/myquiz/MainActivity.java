@@ -105,15 +105,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateScore() {
-        score.setText(getString(R.string.score) + ++mScore);
+        score.setText(getString(R.string.score) + getString(R.string.space) +  ++mScore);
     }
 
     private void gameOver() {
-        createAlert(getString(R.string.game_over) + getString(R.string.your_score) + "" + mScore + " " + getString(R.string.points));
+        createAlert(getString(R.string.game_over) + getString(R.string.your_score) + "" + mScore + getString(R.string.space) + getString(R.string.points));
     }
 
     private void gameWin() {
-        createAlert(getString(R.string.game_win) + getString(R.string.your_score) + "" + mScore + " " + getString(R.string.points));
+        createAlert(getString(R.string.game_win) + getString(R.string.your_score) + "" + mScore + getString(R.string.space) + getString(R.string.points));
     }
 
     @Override

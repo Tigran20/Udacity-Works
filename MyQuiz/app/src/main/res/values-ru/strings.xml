@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">SpaceQuiz</string>
-    <string name="score">Счет:</string>
+    <string name="score">Счет: </string>
     <string name="score_0">Счет: 0</string>
     <string name="button">Кнопка</string>
 

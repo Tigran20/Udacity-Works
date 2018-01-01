@@ -10,4 +10,7 @@
 
     <dimen name="textSize">35sp</dimen>
     <dimen name="textSizeSmall">20sp</dimen>
+    <dimen name="heightLarge">200dp</dimen>
+    <dimen name="heightZero">0dp</dimen>
+    <dimen name="widthZero">0dp</dimen>
 </resources>
