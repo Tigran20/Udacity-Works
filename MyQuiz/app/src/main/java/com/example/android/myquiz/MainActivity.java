@@ -113,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void gameWin() {
-        createAlert(getString(R.string.game_win) + getString(R.string.your_score) + " " + mScore + " " + getString(R.string.points));
+        createAlert(getString(R.string.game_win) + getString(R.string.your_score) + "" + mScore + " " + getString(R.string.points));
     }
 
     @Override

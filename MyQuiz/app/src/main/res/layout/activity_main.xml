@@ -12,21 +12,21 @@
         android:id="@+id/score"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/marginTop"
         android:text="@string/score_0"
         android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="35sp" />
+        android:textColor="@color/white_color"
+        android:textSize="@dimen/textSize" />
 
     <TextView
         android:id="@+id/question"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingTop="110dp"
+        android:paddingTop="@dimen/paddingTop"
         android:textAlignment="center"
-        android:textColor="#fff"
-        android:textSize="35sp" />
+        android:textColor="@color/white_color"
+        android:textSize="@dimen/textSize" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:layout_marginRight="8dp"
+            android:layout_marginRight="@dimen/marginRight"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -45,28 +45,28 @@
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="@dimen/marginBottom"
                 android:layout_weight="1"
                 android:text="@string/button"
-                android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/textSizeSmall" />
 
             <Button
                 android:id="@+id/answer_2"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/marginTopSmall"
                 android:layout_weight="1"
                 android:text="@string/button"
-                android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/textSizeSmall" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="200dp"
-            android:layout_marginLeft="8dp"
+            android:layout_marginLeft="@dimen/marginLeft"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -75,22 +75,22 @@
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginBottom="4dp"
+                android:layout_marginBottom="@dimen/marginBottom"
                 android:layout_weight="1"
                 android:text="@string/button"
-                android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textColor="@color/white_color"
+                android:textSize="@dimen/textSizeSmall" />
 
             <Button
                 android:id="@+id/answer_4"
                 style="@style/Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="@dimen/marginTopSmall"
                 android:layout_weight="1"
                 android:text="@string/button"
-                android:textColor="#fff"
-                android:textSize="20dp" />
+                android:textColor="@color/white_color"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </LinearLayout>
