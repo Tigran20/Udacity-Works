@@ -130,11 +130,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void exitFromApp() {
-        Intent a = new Intent(Intent.ACTION_MAIN);
-        a.addCategory(Intent.CATEGORY_HOME);
-        a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(a);
-
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
     }
 
     void createAlert(String message) {
@@ -143,13 +142,14 @@ public class MainActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setNegativeButton(R.string.exit, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                    public void onClick(DialogInterface arg0, int arg1) {
                         exitFromApp();
                     }
                 })
                 .setPositiveButton(R.string.new_game, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        finish();
                     }
                 }).create().show();
     }
