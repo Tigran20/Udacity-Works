@@ -9,6 +9,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 public class MainActivity extends AppCompatActivity {
 
     private Button answer1;
@@ -19,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mQuestionView;
     private TextView score;
 
-    public String[] mQuestionsList;
-    public String[] mCorrectAnswers;
+    private String[] mQuestionsList;
+    private String[] mCorrectAnswers;
 
     public int[][] mChoices = {
             {R.string.choice_1, R.string.choice_2, R.string.choice_3, R.string.choice_4},
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
     private String mAnswer;
     private int mScore = 0;
     private int mQuestionNumber = 0;
+    private int mUncorrectAnswer = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,17 +72,25 @@ public class MainActivity extends AppCompatActivity {
 
     private class QuestionListener implements View.OnClickListener {
         @Override
-        public void onClick(View v) {
+        public void onClick(View v)
+        {
             Button button = (Button) v;
-            if (button.getText().toString().equals(mAnswer)) {
+            if (button.getText().toString().equals(mAnswer))
+            {
                 updateScore();
                 updateQuestion();
                 if (mScore == 10) {
                     hideItems();
                     gameWin();
                 }
-            } else {
-                gameOver();
+            }
+            else if(!button.getText().toString().equals(mAnswer))
+            {
+                updateQuestion();
+                mUncorrectAnswer++;
+                if(mUncorrectAnswer == 3) {
+                    gameOver();
+                }
             }
         }
     }
@@ -105,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void updateScore() {
-        score.setText(getString(R.string.score) + getString(R.string.space) +  ++mScore);
+        score.setText(getString(R.string.score) + getString(R.string.space) + ++mScore);
     }
 
     private void gameOver() {
