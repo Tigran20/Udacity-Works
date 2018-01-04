@@ -20,6 +20,7 @@ public class Questions extends AppCompatActivity {
 
     private TextView mQuestionView;
     private TextView score;
+    private TextView hp;
 
     private String[] mQuestionsList;
     private String[] mCorrectAnswers;
@@ -52,6 +53,8 @@ public class Questions extends AppCompatActivity {
 
         score = findViewById(R.id.score);
         mQuestionView = findViewById(R.id.question);
+        hp = findViewById(R.id.tv_hp);
+        hp.setText("3");
 
         answer1 = findViewById(R.id.answer_1);
         answer2 = findViewById(R.id.answer_2);
@@ -80,9 +83,7 @@ public class Questions extends AppCompatActivity {
             } else if (!button.getText().toString().equals(mAnswer)) {
                 updateQuestion();
                 mUncorrectAnswer++;
-                if (mUncorrectAnswer == 3) {
-                    gameOver();
-                }
+                hpChange();
             }
         }
     }
@@ -159,5 +160,21 @@ public class Questions extends AppCompatActivity {
                         finish();
                     }
                 }).create().show();
+    }
+
+    public void hpChange() {
+        if(mUncorrectAnswer == 0) {
+            hp.setText("3");
+        }
+        else if(mUncorrectAnswer == 1){
+            hp.setText("2");
+        }
+        else if(mUncorrectAnswer == 2){
+            hp.setText("1");
+        }
+        else if(mUncorrectAnswer == 3){
+            hp.setText("0");
+            gameOver();
+        }
     }
 }

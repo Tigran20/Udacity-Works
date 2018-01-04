@@ -25,13 +25,14 @@
         android:layout_height="56dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="@dimen/marginBottom"
-        android:inputType="text"
+        android:inputType="textCapWords"
         android:maxLength="20"
         android:paddingBottom="16dp"
         android:selectAllOnFocus="false"
         android:textAlignment="center"
         android:textColor="@color/accent"
-        tools:ignore="LabelFor" />
+        tools:ignore="LabelFor"
+        />
 
     <Button
         android:layout_width="wrap_content"

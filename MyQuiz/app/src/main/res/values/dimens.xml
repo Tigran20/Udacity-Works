@@ -9,7 +9,7 @@
 
     <dimen name="paddingTop">110dp</dimen>
 
-    <dimen name="textSize">40sp</dimen>
+    <dimen name="textSize">35sp</dimen>
     <dimen name="textSizeSmall">20sp</dimen>
     <dimen name="heightLarge">200dp</dimen>
     <dimen name="heightZero">0dp</dimen>
