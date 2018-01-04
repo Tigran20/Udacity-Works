@@ -5,94 +5,43 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:orientation="vertical"
-    android:padding="16dp"
-    tools:context="com.example.android.myquiz.MainActivity">
+    tools:context=".MainActivity">
+
 
     <TextView
-        android:id="@+id/score"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/marginTop"
-        android:text="@string/score_0"
-        android:textAlignment="center"
-        android:textColor="@color/white_color"
-        android:textSize="@dimen/textSize" />
+        style="@style/main_screen_title"
+        android:layout_marginTop="80dp"
+        android:paddingBottom="40dp"
+        android:text="@string/world_capitals_quiz" />
 
     <TextView
-        android:id="@+id/question"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingTop="@dimen/paddingTop"
+        style="@style/main_screen_subtitle"
+        android:paddingBottom="16dp"
+        android:text="@string/enter_your_name" />
+
+    <EditText
+        android:id="@+id/ed_user_name"
+        android:layout_width="200dp"
+        android:layout_height="56dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:inputType="text"
+        android:maxLength="20"
+        android:paddingBottom="16dp"
+        android:selectAllOnFocus="false"
         android:textAlignment="center"
-        android:textColor="@color/white_color"
-        android:textSize="@dimen/textSize" />
+        android:textColor="@color/accent"
+        tools:ignore="LabelFor" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="@dimen/heightLarge"
-            android:layout_marginRight="@dimen/marginRight"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/answer_1"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/heightZero"
-                android:layout_marginBottom="@dimen/marginBottom"
-                android:layout_weight="1"
-                android:text="@string/button"
-                android:textColor="@color/white_color"
-                android:textSize="@dimen/textSizeSmall" />
-
-            <Button
-                android:id="@+id/answer_2"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/heightZero"
-                android:layout_marginTop="@dimen/marginTopSmall"
-                android:layout_weight="1"
-                android:text="@string/button"
-                android:textColor="@color/white_color"
-                android:textSize="@dimen/textSizeSmall" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="@dimen/widthZero"
-            android:layout_height="@dimen/heightLarge"
-            android:layout_marginLeft="@dimen/marginLeft"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <Button
-                android:id="@+id/answer_3"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/heightZero"
-                android:layout_marginBottom="@dimen/marginBottom"
-                android:layout_weight="1"
-                android:text="@string/button"
-                android:textColor="@color/white_color"
-                android:textSize="@dimen/textSizeSmall" />
-
-            <Button
-                android:id="@+id/answer_4"
-                style="@style/Widget.AppCompat.Button.Colored"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/heightZero"
-                android:layout_marginTop="@dimen/marginTopSmall"
-                android:layout_weight="1"
-                android:text="@string/button"
-                android:textColor="@color/white_color"
-                android:textSize="20sp" />
-
-        </LinearLayout>
-    </LinearLayout>
-
+        android:layout_gravity="center"
+        android:background="@drawable/start_button_background"
+        android:onClick="startQuizGame"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:text="@string/start_btn"
+        android:textColor="@color/accent"
+        android:textSize="16sp" />
 </LinearLayout>
