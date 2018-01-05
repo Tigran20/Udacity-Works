@@ -36,9 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:textColor="@color/white_color"
-            android:textSize="18sp"
+            android:textSize="15sp"
             android:layout_marginRight="10dp"
-            android:layout_marginTop="2dp"/>
+            android:layout_marginTop="3dp"/>
 
     </FrameLayout>
 
