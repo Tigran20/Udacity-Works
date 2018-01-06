@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Intent startQuizIntent = new Intent(this, Questions.class);
+        startQuizIntent.putExtra(Questions.USER_NAME_EXTRA, userName);
         startActivity(startQuizIntent);
     }
 

@@ -9,6 +9,7 @@
 
 
     <TextView
+        android:id="@+id/user_name"
         style="@style/main_screen_name"
         android:layout_marginTop="@dimen/marginTopLarge"
         android:paddingBottom="@dimen/paddingBottomLarge"
@@ -16,7 +17,6 @@
 
     <TextView
         style="@style/main_screen_subtitle"
-        android:paddingBottom="@dimen/paddingBottomSmall"
         android:text="@string/enter_your_name" />
 
     <EditText

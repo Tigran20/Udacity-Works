@@ -1,6 +1,4 @@
 package com.example.android.myquiz;
-
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +11,9 @@ import android.widget.TextView;
 public class Questions extends AppCompatActivity {
 
     public static final String USER_NAME_EXTRA = "user_name_extra";
+
+    private String mUserName;
+
     private Button answer1;
     private Button answer2;
     private Button answer3;
@@ -48,6 +49,9 @@ public class Questions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
 
+        Intent intent = getIntent();
+        mUserName = intent.getStringExtra(USER_NAME_EXTRA);
+
         mQuestionsList = getResources().getStringArray(R.array.questions);
         mCorrectAnswers = getResources().getStringArray(R.array.answers);
 
@@ -65,6 +69,9 @@ public class Questions extends AppCompatActivity {
         answer2.setOnClickListener(new QuestionListener());
         answer3.setOnClickListener(new QuestionListener());
         answer4.setOnClickListener(new QuestionListener());
+
+
+
 
         updateQuestion();
     }
@@ -117,11 +124,25 @@ public class Questions extends AppCompatActivity {
     }
 
     private void gameOver() {
-        createAlert(getString(R.string.game_over) + getString(R.string.your_score) + "" + mScore + getString(R.string.space) + getString(R.string.points));
+        createAlert((mUserName)
+                + ", "
+                + getString(R.string.game_over)
+                + getString(R.string.your_score)
+                + ""
+                + mScore
+                + getString(R.string.space)
+                + getString(R.string.points));
     }
 
     private void gameWin() {
-        createAlert(getString(R.string.game_win) + getString(R.string.your_score) + "" + mScore + getString(R.string.space) + getString(R.string.points));
+        createAlert((mUserName)
+                + ", "
+                + getString(R.string.game_win)
+                + getString(R.string.your_score)
+                + ""
+                + mScore
+                + getString(R.string.space)
+                + getString(R.string.points));
     }
 
     @Override
