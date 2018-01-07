@@ -70,9 +70,6 @@ public class Questions extends AppCompatActivity {
         answer3.setOnClickListener(new QuestionListener());
         answer4.setOnClickListener(new QuestionListener());
 
-
-
-
         updateQuestion();
     }
 
@@ -154,6 +151,7 @@ public class Questions extends AppCompatActivity {
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         exitFromApp();
+                        finish();
                     }
                 }).create().show();
     }
@@ -173,6 +171,7 @@ public class Questions extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         exitFromApp();
+                        finish();
                     }
                 })
                 .setPositiveButton(R.string.new_game, new DialogInterface.OnClickListener() {
