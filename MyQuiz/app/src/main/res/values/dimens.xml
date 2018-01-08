@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="marginTopHuge">40dp</dimen>
     <dimen name="marginTop">20dp</dimen>
     <dimen name="marginTopSmall">4dp</dimen>
     <dimen name="marginBottom">4dp</dimen>
     <dimen name="marginBottomSmall">2dp</dimen>
     <dimen name="marginLeft">8dp</dimen>
+    <dimen name="marginLeftHuge">48dp</dimen>
     <dimen name="marginRight">8dp</dimen>
+    <dimen name="marginRightLarge">24dp</dimen>
+    <dimen name="marginRightHuge">48dp</dimen>
     <dimen name="marginTopLarge">80dp</dimen>
 
     <dimen name="paddingTop">110dp</dimen>
@@ -20,6 +24,7 @@
     <dimen name="textSizeVerySmall">16sp</dimen>
 
     <dimen name="heightLarge">200dp</dimen>
+    <dimen name="height">150dp</dimen>
     <dimen name="heightZero">0dp</dimen>
     <dimen name="widthZero">0dp</dimen>
 </resources>

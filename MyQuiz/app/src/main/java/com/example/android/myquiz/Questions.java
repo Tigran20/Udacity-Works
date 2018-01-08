@@ -1,4 +1,5 @@
 package com.example.android.myquiz;
+
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -183,16 +184,13 @@ public class Questions extends AppCompatActivity {
     }
 
     public void hpChange() {
-        if(mUncorrectAnswer == 0) {
+        if (mUncorrectAnswer == 0) {
             hp.setText("3");
-        }
-        else if(mUncorrectAnswer == 1){
+        } else if (mUncorrectAnswer == 1) {
             hp.setText("2");
-        }
-        else if(mUncorrectAnswer == 2){
+        } else if (mUncorrectAnswer == 2) {
             hp.setText("1");
-        }
-        else if(mUncorrectAnswer == 3){
+        } else if (mUncorrectAnswer == 3) {
             hp.setText("0");
             gameOver();
         }

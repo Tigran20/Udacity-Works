@@ -10,8 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:screenOrientation="portrait">
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,8 +19,7 @@
         </activity>
         <activity
             android:name=".Questions"
-            android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait" />
+            android:configChanges="keyboardHidden|orientation" />
 
     </application>
 
