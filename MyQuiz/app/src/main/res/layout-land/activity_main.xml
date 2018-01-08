@@ -11,7 +11,7 @@
         android:id="@+id/user_name"
         style="@style/main_screen_name"
         android:layout_marginTop="@dimen/marginTopHuge"
-        android:paddingBottom="@dimen/paddingBottomLarge"
+        android:paddingBottom="@dimen/paddingBottomNormal"
         android:text="@string/world_capitals_quiz" />
 
     <TextView

@@ -6,10 +6,10 @@
     <dimen name="marginBottom">4dp</dimen>
     <dimen name="marginBottomSmall">2dp</dimen>
     <dimen name="marginLeft">8dp</dimen>
-    <dimen name="marginLeftHuge">48dp</dimen>
+    <dimen name="marginLeftHuge">56dp</dimen>
     <dimen name="marginRight">8dp</dimen>
     <dimen name="marginRightLarge">24dp</dimen>
-    <dimen name="marginRightHuge">48dp</dimen>
+    <dimen name="marginRightHuge">56dp</dimen>
     <dimen name="marginTopLarge">80dp</dimen>
 
     <dimen name="paddingTop">110dp</dimen>
@@ -17,9 +17,10 @@
     <dimen name="paddingRight">16dp</dimen>
     <dimen name="paddingBottomSmall">8dp</dimen>
     <dimen name="paddingBottomLarge">40dp</dimen>
+    <dimen name="paddingBottomNormal">28dp</dimen>
     <dimen name="paddingBottom">16dp</dimen>
 
-    <dimen name="textSize">35sp</dimen>
+    <dimen name="textSize">32sp</dimen>
     <dimen name="textSizeSmall">20sp</dimen>
     <dimen name="textSizeVerySmall">16sp</dimen>
 
