@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         Intent startQuizIntent = new Intent(this, Questions.class);
+        startQuizIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startQuizIntent.putExtra(Questions.USER_NAME_EXTRA, userName);
         startActivity(startQuizIntent);
     }

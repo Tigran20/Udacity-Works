@@ -7,7 +7,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <TextView
         android:id="@+id/user_name"
         style="@style/main_screen_name"
@@ -25,14 +24,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="@dimen/marginBottom"
-        android:inputType="textCapWords"
         android:ems="10"
+        android:imeOptions="actionDone"
+        android:inputType="textCapWords"
         android:paddingBottom="@dimen/paddingBottom"
         android:selectAllOnFocus="false"
         android:textAlignment="center"
         android:textColor="@color/accent"
-        tools:ignore="LabelFor"
-        android:imeOptions="actionDone"/>
+        tools:ignore="LabelFor" />
 
     <Button
         android:layout_width="wrap_content"

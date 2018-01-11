@@ -2,6 +2,7 @@ package com.example.android.myquiz;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -11,22 +12,46 @@ import android.widget.TextView;
 
 public class Questions extends AppCompatActivity {
 
+    //Константы для сохранения данных
     public static final String USER_NAME_EXTRA = "user_name_extra";
+    public static final String SCORE = "score";
+    public static final String QUESTION_NUMBER = "question_number";
+    public static final String HEALTH_POINTS = "health";
 
+    //Переменная для имени
     private String mUserName;
 
+    //Вьюхи для отображения счета, хп и вопроса
+    private TextView score;
+    private TextView hp;
+    private TextView mQuestionView;
+
+    //Кнопки с вариантами ответов
     private Button answer1;
     private Button answer2;
     private Button answer3;
     private Button answer4;
 
-    private TextView mQuestionView;
-    private TextView score;
-    private TextView hp;
+    //Переменная для правильного ответа
+    private String mAnswer;
 
+    //Переменная для количества хп
+    private int mHealth = 3;
+
+    //Переменная для счета
+    private int mScore = 0;
+
+    //Переменная для номера вопроса
+    private int mQuestionNumber = 0;
+
+    //Переменная для количества неправильных ответов
+    private int mUncorrectAnswer;
+
+    //Массивы для хранения вопросов и правильных ответов
     private String[] mQuestionsList;
     private String[] mCorrectAnswers;
 
+    //Массив для хранения всех вариантов ответов
     public int[][] mChoices = {
             {R.string.choice_1, R.string.choice_2, R.string.choice_3, R.string.choice_4},
             {R.string.choice_1_2, R.string.choice_2_2, R.string.choice_3_2, R.string.choice_4_2},
@@ -40,26 +65,14 @@ public class Questions extends AppCompatActivity {
             {R.string.choice_1_10, R.string.choice_2_10, R.string.choice_3_10, R.string.choice_4_10},
     };
 
-    private String mAnswer;
-    private int mScore = 0;
-    private int mQuestionNumber = 0;
-    private int mUncorrectAnswer = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
 
-        Intent intent = getIntent();
-        mUserName = intent.getStringExtra(USER_NAME_EXTRA);
-
-        mQuestionsList = getResources().getStringArray(R.array.questions);
-        mCorrectAnswers = getResources().getStringArray(R.array.answers);
-
         score = findViewById(R.id.score);
-        mQuestionView = findViewById(R.id.question);
         hp = findViewById(R.id.tv_hp);
-        hp.setText("3");
+        mQuestionView = findViewById(R.id.question);
 
         answer1 = findViewById(R.id.answer_1);
         answer2 = findViewById(R.id.answer_2);
@@ -71,29 +84,53 @@ public class Questions extends AppCompatActivity {
         answer3.setOnClickListener(new QuestionListener());
         answer4.setOnClickListener(new QuestionListener());
 
-        updateQuestion();
+        Intent intent = getIntent();
+        mUserName = intent.getStringExtra(USER_NAME_EXTRA);
+
+        mQuestionsList = getResources().getStringArray(R.array.questions);
+        mCorrectAnswers = getResources().getStringArray(R.array.answers);
+
+        if (savedInstanceState != null) {
+            mUserName = savedInstanceState.getString(USER_NAME_EXTRA);
+            mScore = savedInstanceState.getInt(SCORE);
+            mHealth = savedInstanceState.getInt(HEALTH_POINTS);
+            mQuestionNumber = savedInstanceState.getInt(QUESTION_NUMBER);
+        }
+
+        score.setText(getString(R.string.score) + getString(R.string.space) + mScore);
+        updateQuestion(mQuestionNumber);
+        hp.setText(String.valueOf(mHealth));
     }
 
-    private class QuestionListener implements View.OnClickListener {
+
+    public class QuestionListener implements View.OnClickListener {
         @Override
         public void onClick(View v) {
             Button button = (Button) v;
             if (button.getText().toString().equals(mAnswer)) {
+
                 updateScore();
-                updateQuestion();
-                if (mScore == 10) {
-                    hideItems();
-                    gameWin();
-                }
+                mQuestionNumber++;
+                updateQuestion(mQuestionNumber);
+
             } else if (!button.getText().toString().equals(mAnswer)) {
-                updateQuestion();
+                mQuestionNumber++;
+                updateQuestion(mQuestionNumber);
                 mUncorrectAnswer++;
-                hpChange();
+                mHealth--;
+                if (mHealth == 0) {
+                    gameOver();
+                    hideItems();
+                }
+                hp.setText(String.valueOf(mHealth));
+            } else if (mScore == 10 || mQuestionNumber == 9) {
+                gameWin();
+                hideItems();
             }
         }
     }
 
-    private void updateQuestion() {
+    private void updateQuestion(int Question) {
         if (mQuestionNumber < mQuestionsList.length) {
 
             mQuestionView.setText(mQuestionsList[mQuestionNumber]);
@@ -104,8 +141,8 @@ public class Questions extends AppCompatActivity {
             answer4.setText(mChoices[mQuestionNumber][3]);
 
             mAnswer = mCorrectAnswers[mQuestionNumber];
-            mQuestionNumber++;
-        }
+        } else
+            gameWin();
     }
 
     private void hideItems() {
@@ -148,11 +185,15 @@ public class Questions extends AppCompatActivity {
         new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
                 .setMessage(R.string.exit_question)
                 .setCancelable(false)
-                .setNegativeButton(R.string.no, null)
+                .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                })
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        exitFromApp();
-                        finish();
+                        Questions.this.finish();
                     }
                 }).create().show();
     }
@@ -177,22 +218,22 @@ public class Questions extends AppCompatActivity {
                 })
                 .setPositiveButton(R.string.new_game, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
-                        startActivity(new Intent(getApplicationContext(), Questions.class));
-                        finish();
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
                     }
                 }).create().show();
     }
 
-    public void hpChange() {
-        if (mUncorrectAnswer == 0) {
-            hp.setText("3");
-        } else if (mUncorrectAnswer == 1) {
-            hp.setText("2");
-        } else if (mUncorrectAnswer == 2) {
-            hp.setText("1");
-        } else if (mUncorrectAnswer == 3) {
-            hp.setText("0");
-            gameOver();
-        }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+
+        outState.putString(Questions.USER_NAME_EXTRA, mUserName);
+        outState.putInt(Questions.SCORE, mScore);
+        outState.putInt(Questions.HEALTH_POINTS, mHealth);
+        outState.putInt(Questions.QUESTION_NUMBER, mQuestionNumber);
+
+        super.onSaveInstanceState(outState);
+
     }
 }
