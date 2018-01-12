@@ -8,16 +8,16 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int scoreTeamA = 0;
-    int scoreTeamB = 0;
+    private int scoreTeamA = 0;
+    private int scoreTeamB = 0;
 
-    EditText nameTeamA;
-    EditText nameTeamB;
+    private EditText nameTeamA;
+    private EditText nameTeamB;
 
-    String nameA;
-    String nameB;
+    private String nameA;
+    private String nameB;
 
-    TextView winnerTeam;
+    private TextView winnerTeam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.team_winner).setVisibility(View.INVISIBLE);
     }
 
-    public void winner (View v){
+    public void winner(View v) {
         nameTeamA = findViewById(R.id.name_team_a);
         nameTeamB = findViewById(R.id.name_team_b);
 
@@ -71,22 +71,18 @@ public class MainActivity extends AppCompatActivity {
         nameB = String.valueOf(nameTeamB.getText());
 
         if (scoreTeamB > scoreTeamA) {
-            if(!nameB.isEmpty())
+            if (!nameB.isEmpty())
                 winnerTeam("TEAM " + nameB + " WIN");
             else {
                 winnerTeam("TEAM B WIN");
             }
-        }
-
-        else if (scoreTeamB < scoreTeamA) {
-            if(!nameA.isEmpty())
+        } else if (scoreTeamB < scoreTeamA) {
+            if (!nameA.isEmpty())
                 winnerTeam("TEAM " + nameA + " WIN");
             else {
                 winnerTeam("TEAM A WIN");
             }
-        }
-
-        else if (scoreTeamA == scoreTeamB) {
+        } else if (scoreTeamA == scoreTeamB) {
             winnerTeam("DRAW");
         }
     }
@@ -106,8 +102,6 @@ public class MainActivity extends AppCompatActivity {
         winnerTeam.setText(team_name);
         findViewById(R.id.team_winner).setVisibility(View.VISIBLE);
     }
-
-
 
 
 }

@@ -6,7 +6,9 @@
 
     <color name="colorRed">#cbf11f1f</color>
     <color name="colorGreen">#cb03c152</color>
-    <color name="accent_material_light">#dd2c00</color>
+    <color name="accentMateriaLlight">#dd2c00</color>
+    <color name="grey_color">#616161</color>
+    <color name="color_black">#000</color>
 
 
 </resources>
