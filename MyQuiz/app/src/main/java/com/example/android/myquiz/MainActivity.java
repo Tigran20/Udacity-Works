@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 public class MainActivity extends AppCompatActivity {
     private static final String USER_NAME_PATTERN = "[\\w.-]{1,20}";
     private EditText mUserNameInput;

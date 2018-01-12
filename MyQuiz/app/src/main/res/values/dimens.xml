@@ -1,33 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="marginTopLarge">80dp</dimen>
-    <dimen name="marginTopHuge">40dp</dimen>
-    <dimen name="marginTop">20dp</dimen>
-    <dimen name="marginTopSmall">4dp</dimen>
-    <dimen name="marginBottom">4dp</dimen>
-    <dimen name="marginBottomSmall">2dp</dimen>
-    <dimen name="marginLeftHuge">56dp</dimen>
-    <dimen name="marginLeft">8dp</dimen>
-    <dimen name="marginRightHuge">56dp</dimen>
-    <dimen name="marginRightLarge">24dp</dimen>
-    <dimen name="marginRight">8dp</dimen>
+    <dimen name="margin_top_huge">80dp</dimen>
+    <dimen name="margin_top_large">40dp</dimen>
+    <dimen name="margin_top">20dp</dimen>
+    <dimen name="margin_top_small">4dp</dimen>
+    <dimen name="margin_bottom">4dp</dimen>
+    <dimen name="margin_bottom_small">2dp</dimen>
+    <dimen name="margin_left_huge">56dp</dimen>
+    <dimen name="margin_left">8dp</dimen>
+    <dimen name="margin_right_huge">56dp</dimen>
+    <dimen name="margin_right_large">24dp</dimen>
+    <dimen name="margin_right">8dp</dimen>
 
-    <dimen name="paddingTop">110dp</dimen>
-    <dimen name="paddingLeft">16dp</dimen>
-    <dimen name="paddingRight">16dp</dimen>
-    <dimen name="paddingBottomLarge">40dp</dimen>
-    <dimen name="paddingBottomNormal">28dp</dimen>
-    <dimen name="paddingBottom">16dp</dimen>
-    <dimen name="paddingBottomSmall">8dp</dimen>
+    <dimen name="general_padding">16dp</dimen>
+    <dimen name="padding_top">110dp</dimen>
+    <dimen name="padding_left">16dp</dimen>
+    <dimen name="padding_right">16dp</dimen>
+    <dimen name="padding_bottom_large">40dp</dimen>
+    <dimen name="padding_bottom_normal">28dp</dimen>
+    <dimen name="padding_bottom">16dp</dimen>
+    <dimen name="padding_bottom_small">8dp</dimen>
 
-    <dimen name="textSizeMain">40sp</dimen>
-    <dimen name="mainScreenSubtitleText">18sp</dimen>
-    <dimen name="textSize">32sp</dimen>
-    <dimen name="textSizeSmall">20sp</dimen>
-    <dimen name="textSizeVerySmall">16sp</dimen>
+    <dimen name="text_size_main">40sp</dimen>
+    <dimen name="main_screen_subtitle_text">18sp</dimen>
+    <dimen name="text_size">32sp</dimen>
+    <dimen name="text_size_small">20sp</dimen>
+    <dimen name="text_size_very_small">16sp</dimen>
 
-    <dimen name="heightLarge">200dp</dimen>
+    <dimen name="height_huge">200dp</dimen>
     <dimen name="height">150dp</dimen>
-    <dimen name="heightZero">0dp</dimen>
-    <dimen name="widthZero">0dp</dimen>
+    <dimen name="height_zero">0dp</dimen>
+    <dimen name="width_zero">0dp</dimen>
+
 </resources>

@@ -2,7 +2,6 @@ package com.example.android.myquiz;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -108,11 +107,9 @@ public class Questions extends AppCompatActivity {
         public void onClick(View v) {
             Button button = (Button) v;
             if (button.getText().toString().equals(mAnswer)) {
-
                 updateScore();
                 mQuestionNumber++;
                 updateQuestion(mQuestionNumber);
-
             } else if (!button.getText().toString().equals(mAnswer)) {
                 mQuestionNumber++;
                 updateQuestion(mQuestionNumber);
@@ -132,7 +129,6 @@ public class Questions extends AppCompatActivity {
 
     private void updateQuestion(int Question) {
         if (mQuestionNumber < mQuestionsList.length) {
-
             mQuestionView.setText(mQuestionsList[mQuestionNumber]);
 
             answer1.setText(mChoices[mQuestionNumber][0]);
@@ -188,7 +184,6 @@ public class Questions extends AppCompatActivity {
                 .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                     }
                 })
                 .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
@@ -219,7 +214,6 @@ public class Questions extends AppCompatActivity {
                 .setPositiveButton(R.string.new_game, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
-
                     }
                 }).create().show();
     }
@@ -227,13 +221,11 @@ public class Questions extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
-
         outState.putString(Questions.USER_NAME_EXTRA, mUserName);
         outState.putInt(Questions.SCORE, mScore);
         outState.putInt(Questions.HEALTH_POINTS, mHealth);
         outState.putInt(Questions.QUESTION_NUMBER, mQuestionNumber);
 
         super.onSaveInstanceState(outState);
-
     }
 }

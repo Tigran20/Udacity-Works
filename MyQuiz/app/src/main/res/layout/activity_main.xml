@@ -10,8 +10,8 @@
     <TextView
         android:id="@+id/user_name"
         style="@style/MainScreenName"
-        android:layout_marginTop="@dimen/marginTopLarge"
-        android:paddingBottom="@dimen/paddingBottomLarge"
+        android:layout_marginTop="@dimen/margin_top_huge"
+        android:paddingBottom="@dimen/padding_bottom_large"
         android:text="@string/world_capitals_quiz" />
 
     <TextView
@@ -23,11 +23,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="@dimen/marginBottom"
+        android:layout_marginBottom="@dimen/margin_bottom"
         android:ems="10"
         android:imeOptions="actionDone"
         android:inputType="textCapWords"
-        android:paddingBottom="@dimen/paddingBottom"
+        android:paddingBottom="@dimen/padding_bottom"
         android:selectAllOnFocus="false"
         android:textAlignment="center"
         android:textColor="@color/accent"
@@ -39,9 +39,9 @@
         android:layout_gravity="center"
         android:background="@drawable/start_button_background"
         android:onClick="startQuizGame"
-        android:paddingLeft="@dimen/paddingLeft"
-        android:paddingRight="@dimen/paddingRight"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="@dimen/padding_right"
         android:text="@string/start_btn"
         android:textColor="@color/accent"
-        android:textSize="@dimen/textSizeVerySmall" />
+        android:textSize="@dimen/text_size_very_small" />
 </LinearLayout>

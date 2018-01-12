@@ -18,12 +18,11 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:textColor">@color/accent</item>
-        <item name="android:textSize">@dimen/textSizeMain</item>
-
+        <item name="android:textSize">@dimen/text_size_main</item>
     </style>
 
     <style name="MainScreenSubtitle" parent="MainScreenTitle">
-        <item name="android:textSize">@dimen/mainScreenSubtitleText</item>
+        <item name="android:textSize">@dimen/main_screen_subtitle_text</item>
     </style>
 
     <style name="MainScreenName" parent="MainScreenTitle">
