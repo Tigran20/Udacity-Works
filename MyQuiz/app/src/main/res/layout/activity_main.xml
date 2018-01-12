@@ -9,13 +9,13 @@
 
     <TextView
         android:id="@+id/user_name"
-        style="@style/main_screen_name"
+        style="@style/MainScreenName"
         android:layout_marginTop="@dimen/marginTopLarge"
         android:paddingBottom="@dimen/paddingBottomLarge"
         android:text="@string/world_capitals_quiz" />
 
     <TextView
-        style="@style/main_screen_subtitle"
+        style="@style/MainScreenSubtitle"
         android:text="@string/enter_your_name" />
 
     <EditText

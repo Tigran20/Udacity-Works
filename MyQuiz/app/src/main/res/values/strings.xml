@@ -5,7 +5,7 @@
     <string name="button">Button</string>
     <string name="score">Score: </string>
 
-    <string name="input_name_error_msg" tools:ignore="TypographyDashes">Please Enter Correct Name!\n\t\tA-Z;a-z;0-9;.;-;_ allowed</string>
+    <string name="input_name_error_msg" tools:ignore="TypographyDashes">Please Enter Correct Name!</string>
     <string name="world_capitals_quiz">Space Quiz</string>
     <string name="enter_your_name">Enter Your Name:</string>
     <string name="start_btn">Start</string>

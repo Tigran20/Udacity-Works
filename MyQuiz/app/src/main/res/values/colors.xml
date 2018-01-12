@@ -5,11 +5,14 @@
     <color name="colorAccent">#146a08ea</color>
 
     <color name="customNavBar">#3a4796</color>
-    <color name="white_color">#fff</color>
+    <color name="whiteColor">#fff</color>
+    <color name="blackColor">#000</color>
 
-    <color name="primary_dark">#123551</color>
-    <color name="start_btn">#4772b3</color>
+    <color name="primaryDark">#123551</color>
+    <color name="startBtn">#4772b3</color>
 
     <color name="accent">#FFEB3B</color>
+
+
 
 </resources>
