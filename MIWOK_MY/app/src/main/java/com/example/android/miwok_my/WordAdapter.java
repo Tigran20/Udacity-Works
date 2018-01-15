@@ -20,12 +20,9 @@ public class WordAdapter extends ArrayAdapter<Word> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        //Не знаю, для чего это нужно ???????????????????
-        View listItemView = convertView;
-
         //Надуваем Вьюху данными через LayoutInflater, используя формат вывода в стиле list_item
-        if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(
+        if (convertView == null) {
+            convertView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item, parent, false);
         }
 
@@ -33,15 +30,15 @@ public class WordAdapter extends ArrayAdapter<Word> {
         Word currentWord = getItem(position);
 
         //Создаем Вьюху и кладем в нее данные из mMiwokTranslation Word
-        TextView mMiwokTV = (TextView) listItemView.findViewById(R.id.miwok_tv);
+        TextView mMiwokTV = (TextView) convertView.findViewById(R.id.miwok_tv);
         mMiwokTV.setText(currentWord.getmMiwokTranslation());
 
         //Создаем Вьюху и кладем в нее данные из mDefaultTranslation Word
-        TextView mDefaultTV = (TextView) listItemView.findViewById(R.id.default_tv);
+        TextView mDefaultTV = (TextView) convertView.findViewById(R.id.default_tv);
         mDefaultTV.setText(currentWord.getmDefaultTranslation());
 
         //Возвращаем заполненную данными Вьюху
-        return listItemView;
+        return convertView;
     }
 
 
