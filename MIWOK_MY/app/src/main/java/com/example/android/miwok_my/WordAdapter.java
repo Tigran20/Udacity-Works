@@ -11,6 +11,11 @@ import java.util.ArrayList;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
+    private Word currentWord;
+
+    private TextView mMiwokTV;
+    private TextView mDefaultTV;
+
     //Конструктор
     public WordAdapter(Activity context, ArrayList<Word> words) {
         super(context, 0, words);
@@ -27,14 +32,14 @@ public class WordAdapter extends ArrayAdapter<Word> {
         }
 
         //Получаем элемент типа Word по его позиции
-        Word currentWord = getItem(position);
+        currentWord = getItem(position);
 
         //Создаем Вьюху и кладем в нее данные из mMiwokTranslation Word
-        TextView mMiwokTV = (TextView) convertView.findViewById(R.id.miwok_tv);
+        mMiwokTV = (TextView) convertView.findViewById(R.id.miwok_tv);
         mMiwokTV.setText(currentWord.getmMiwokTranslation());
 
         //Создаем Вьюху и кладем в нее данные из mDefaultTranslation Word
-        TextView mDefaultTV = (TextView) convertView.findViewById(R.id.default_tv);
+        mDefaultTV = (TextView) convertView.findViewById(R.id.default_tv);
         mDefaultTV.setText(currentWord.getmDefaultTranslation());
 
         //Возвращаем заполненную данными Вьюху
