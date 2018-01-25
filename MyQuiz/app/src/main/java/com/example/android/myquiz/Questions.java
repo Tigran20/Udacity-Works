@@ -2,12 +2,19 @@ package com.example.android.myquiz;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Questions extends AppCompatActivity {
 
@@ -31,6 +38,12 @@ public class Questions extends AppCompatActivity {
     private Button answer3;
     private Button answer4;
 
+    //РадиоБаттоны с вариантами ответов
+    private RadioButton answerR1;
+    private RadioButton answerR2;
+    private RadioButton answerR3;
+    private RadioButton answerR4;
+
     //Переменная для правильного ответа
     private String mAnswer;
 
@@ -42,6 +55,9 @@ public class Questions extends AppCompatActivity {
 
     //Переменная для номера вопроса
     private int mQuestionNumber = 0;
+
+    private RadioGroup mRadioGroup;
+    private View mBtnGroup;
 
     //Переменная для количества неправильных ответов
     private int mUncorrectAnswer;
@@ -69,9 +85,24 @@ public class Questions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
 
+        if (savedInstanceState != null) {
+            mUserName = savedInstanceState.getString(USER_NAME_EXTRA);
+            mScore = savedInstanceState.getInt(SCORE);
+            mHealth = savedInstanceState.getInt(HEALTH_POINTS);
+            mQuestionNumber = savedInstanceState.getInt(QUESTION_NUMBER);
+        }
+
         score = findViewById(R.id.score);
         hp = findViewById(R.id.tv_hp);
         mQuestionView = findViewById(R.id.question);
+
+        mRadioGroup = (RadioGroup) findViewById(R.id.radio_gr);
+        mBtnGroup = (LinearLayout) findViewById(R.id.btn_group);
+
+        answerR1 = findViewById(R.id.answer_rb_1);
+        answerR2 = findViewById(R.id.answer_rb_2);
+        answerR3 = findViewById(R.id.answer_rb_3);
+        answerR4 = findViewById(R.id.answer_rb_4);
 
         answer1 = findViewById(R.id.answer_1);
         answer2 = findViewById(R.id.answer_2);
@@ -83,36 +114,38 @@ public class Questions extends AppCompatActivity {
         answer3.setOnClickListener(new QuestionListener());
         answer4.setOnClickListener(new QuestionListener());
 
+        answerR1.setOnClickListener(new RBListener());
+        answerR2.setOnClickListener(new RBListener());
+        answerR3.setOnClickListener(new RBListener());
+        answerR4.setOnClickListener(new RBListener());
+
         Intent intent = getIntent();
         mUserName = intent.getStringExtra(USER_NAME_EXTRA);
 
         mQuestionsList = getResources().getStringArray(R.array.questions);
         mCorrectAnswers = getResources().getStringArray(R.array.answers);
 
-        if (savedInstanceState != null) {
-            mUserName = savedInstanceState.getString(USER_NAME_EXTRA);
-            mScore = savedInstanceState.getInt(SCORE);
-            mHealth = savedInstanceState.getInt(HEALTH_POINTS);
-            mQuestionNumber = savedInstanceState.getInt(QUESTION_NUMBER);
-        }
-
         score.setText(getString(R.string.score) + getString(R.string.space) + mScore);
+
         updateQuestion(mQuestionNumber);
         hp.setText(String.valueOf(mHealth));
-    }
 
+        updateLL(mQuestionNumber);
+    }
 
     public class QuestionListener implements View.OnClickListener {
         @Override
-        public void onClick(View v) {
-            Button button = (Button) v;
+        public void onClick(View view) {
+            Button button = (Button) view;
             if (button.getText().toString().equals(mAnswer)) {
                 updateScore();
                 mQuestionNumber++;
                 updateQuestion(mQuestionNumber);
+                updateLL(mQuestionNumber);
             } else if (!button.getText().toString().equals(mAnswer)) {
                 mQuestionNumber++;
                 updateQuestion(mQuestionNumber);
+                updateLL(mQuestionNumber);
                 mUncorrectAnswer++;
                 mHealth--;
                 if (mHealth == 0) {
@@ -120,9 +153,105 @@ public class Questions extends AppCompatActivity {
                     hideItems();
                 }
                 hp.setText(String.valueOf(mHealth));
-            } else if (mScore == 10 || mQuestionNumber == 9) {
-                gameWin();
-                hideItems();
+            }
+        }
+    }
+
+    public class RBListener implements View.OnClickListener {
+        @Override
+        public void onClick(View view) {
+            Handler handler = new Handler();
+            RadioButton rb = (RadioButton) view;
+            switch (rb.getId()) {
+                case R.id.answer_rb_1:
+                    if (answerR1.isChecked()) {
+                        answerR1.setTextColor(Color.GREEN);
+                        answerR2.setEnabled(false);
+                        answerR3.setEnabled(false);
+                        answerR4.setEnabled(false);
+                    }
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            updateScore();
+                            mQuestionNumber++;
+                            updateQuestion(mQuestionNumber);
+                            updateLL(mQuestionNumber);
+                        }
+                    }, 1000);
+                    break;
+                case R.id.answer_rb_2:
+                    if (answerR2.isChecked()) {
+                        answerR2.setTextColor(Color.RED);
+                        answerR1.setEnabled(false);
+                        answerR3.setEnabled(false);
+                        answerR4.setEnabled(false);
+                    }
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mQuestionNumber++;
+                            updateQuestion(mQuestionNumber);
+                            updateLL(mQuestionNumber);
+                            mUncorrectAnswer++;
+                            mHealth--;
+                            if (mHealth == 0) {
+                                gameOver();
+                                hideItems();
+                            }
+                            hp.setText(String.valueOf(mHealth));
+                        }
+                    }, 1000);
+                    break;
+                case R.id.answer_rb_3:
+                    if (answerR3.isChecked()) {
+                        answerR3.setTextColor(Color.RED);
+                        answerR1.setEnabled(false);
+                        answerR2.setEnabled(false);
+                        answerR4.setEnabled(false);
+                    }
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mQuestionNumber++;
+                            updateQuestion(mQuestionNumber);
+                            updateLL(mQuestionNumber);
+                            mUncorrectAnswer++;
+                            mHealth--;
+                            if (mHealth == 0) {
+                                gameOver();
+                                hideItems();
+                            }
+                            hp.setText(String.valueOf(mHealth));
+                        }
+                    }, 1000);
+                    break;
+                case R.id.answer_rb_4:
+                    if (answerR4.isChecked()) {
+                        answerR4.setTextColor(Color.RED);
+                        answerR1.setEnabled(false);
+                        answerR2.setEnabled(false);
+                        answerR3.setEnabled(false);
+                    }
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mQuestionNumber++;
+                            updateQuestion(mQuestionNumber);
+                            updateLL(mQuestionNumber);
+                            mUncorrectAnswer++;
+                            mHealth--;
+                            if (mHealth == 0) {
+                                gameOver();
+                                hideItems();
+                            }
+                            hp.setText(String.valueOf(mHealth));
+                        }
+                    }, 1000);
+                    break;
+
+                default:
+                    break;
             }
         }
     }
@@ -131,12 +260,20 @@ public class Questions extends AppCompatActivity {
         if (mQuestionNumber < mQuestionsList.length) {
             mQuestionView.setText(mQuestionsList[mQuestionNumber]);
 
+            answerR1.setText(mChoices[mQuestionNumber][0]);
+            answerR2.setText(mChoices[mQuestionNumber][1]);
+            answerR3.setText(mChoices[mQuestionNumber][2]);
+            answerR4.setText(mChoices[mQuestionNumber][3]);
+
             answer1.setText(mChoices[mQuestionNumber][0]);
             answer2.setText(mChoices[mQuestionNumber][1]);
             answer3.setText(mChoices[mQuestionNumber][2]);
             answer4.setText(mChoices[mQuestionNumber][3]);
 
             mAnswer = mCorrectAnswers[mQuestionNumber];
+        } else if (mScore > 6) {
+            gameWin();
+            hideItems();
         } else
             gameWin();
     }
@@ -144,10 +281,19 @@ public class Questions extends AppCompatActivity {
     private void hideItems() {
         mQuestionView.setVisibility(View.INVISIBLE);
         score.setVisibility(View.INVISIBLE);
-        answer1.setVisibility(View.INVISIBLE);
-        answer2.setVisibility(View.INVISIBLE);
-        answer3.setVisibility(View.INVISIBLE);
-        answer4.setVisibility(View.INVISIBLE);
+        mBtnGroup.setVisibility(View.INVISIBLE);
+        mRadioGroup.setVisibility(View.INVISIBLE);
+    }
+
+    private int updateLL(int n) {
+        if(n == 0) {
+            mRadioGroup.setVisibility(View.VISIBLE);
+        }
+        if (n > 0 && n < 10) {
+            mRadioGroup.setVisibility(View.INVISIBLE);
+            mBtnGroup.setVisibility(View.VISIBLE);
+        }
+        return n;
     }
 
     private void updateScore() {
@@ -193,12 +339,7 @@ public class Questions extends AppCompatActivity {
                 }).create().show();
     }
 
-    public void exitFromApp() {
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
-    }
+
 
     void createAlert(String message) {
         new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
@@ -207,17 +348,16 @@ public class Questions extends AppCompatActivity {
                 .setNegativeButton(R.string.exit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        exitFromApp();
                         finish();
                     }
                 })
                 .setPositiveButton(R.string.new_game, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
+                        finish();
                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
                     }
                 }).create().show();
     }
-
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
@@ -228,4 +368,6 @@ public class Questions extends AppCompatActivity {
 
         super.onSaveInstanceState(outState);
     }
+
+
 }
