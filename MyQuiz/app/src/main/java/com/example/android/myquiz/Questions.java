@@ -140,13 +140,11 @@ public class Questions extends AppCompatActivity {
         @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onClick(View view) {
-
             RadioButton rb = (RadioButton) view;
             switch (rb.getId()) {
                 case R.id.answer_rb_1:
                     if (answerR1.isChecked()) {
                         answerR1.setTextColor(Color.GREEN);
-
                         answerR2.setEnabled(false);
                         answerR3.setEnabled(false);
                         answerR4.setEnabled(false);
@@ -160,7 +158,7 @@ public class Questions extends AppCompatActivity {
                         answerR3.setEnabled(false);
                         answerR4.setEnabled(false);
                     }
-                    handlerRb();
+                    lessHpForRadioButton();
                     break;
                 case R.id.answer_rb_3:
                     if (answerR3.isChecked()) {
@@ -169,7 +167,7 @@ public class Questions extends AppCompatActivity {
                         answerR2.setEnabled(false);
                         answerR4.setEnabled(false);
                     }
-                    handlerRb();
+                    lessHpForRadioButton();
                     break;
                 case R.id.answer_rb_4:
                     if (answerR4.isChecked()) {
@@ -178,7 +176,7 @@ public class Questions extends AppCompatActivity {
                         answerR2.setEnabled(false);
                         answerR3.setEnabled(false);
                     }
-                    handlerRb();
+                    lessHpForRadioButton();
                     break;
 
                 default:
@@ -309,6 +307,13 @@ public class Questions extends AppCompatActivity {
                 updateLL(mQuestionNumber);
             }
         }, 1000);
+    }
+
+    public void lessHpForRadioButton() {
+        mUncorrectAnswer++;
+        mHealth--;
+        hp.setText(String.valueOf(mHealth));
+        handlerRb();
     }
 
     public void init() {
