@@ -10,7 +10,7 @@
     <TextView
         android:id="@+id/user_name"
         style="@style/MainScreenName"
-        android:layout_marginTop="@dimen/margin_top_huge"
+        android:layout_marginTop="@dimen/margin_top_huge2"
         android:paddingBottom="@dimen/padding_bottom_normal"
         android:text="@string/world_capitals_quiz" />
 

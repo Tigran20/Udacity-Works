@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:orientation="horizontal">
 
         <FrameLayout
@@ -159,9 +160,9 @@
                     android:layout_marginBottom="@dimen/margin_bottom"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
+                    android:buttonTint="@color/rb_color"
                     android:textColor="@color/whiteColor"
-                    android:textSize="@dimen/text_size_small"
-                    android:buttonTint="@color/rb_color"/>
+                    android:textSize="@dimen/text_size_small" />
 
                 <RadioButton
                     android:id="@+id/answer_rb_2"
@@ -171,9 +172,9 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/margin_top_small"
                     android:layout_weight="1"
+                    android:buttonTint="@color/rb_color"
                     android:textColor="@color/whiteColor"
-                    android:textSize="@dimen/text_size_small"
-                    android:buttonTint="@color/rb_color"/>
+                    android:textSize="@dimen/text_size_small" />
             </LinearLayout>
 
             <LinearLayout
@@ -191,9 +192,9 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="@dimen/margin_bottom"
                     android:layout_weight="1"
+                    android:buttonTint="@color/rb_color"
                     android:textColor="@color/whiteColor"
-                    android:textSize="@dimen/text_size_small"
-                    android:buttonTint="@color/rb_color"/>
+                    android:textSize="@dimen/text_size_small" />
 
                 <RadioButton
                     android:id="@+id/answer_rb_4"
@@ -203,9 +204,9 @@
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/margin_top_small"
                     android:layout_weight="1"
+                    android:buttonTint="@color/rb_color"
                     android:textColor="@color/whiteColor"
-                    android:textSize="20sp"
-                    android:buttonTint="@color/rb_color"/>
+                    android:textSize="20sp" />
 
             </LinearLayout>
         </RadioGroup>
