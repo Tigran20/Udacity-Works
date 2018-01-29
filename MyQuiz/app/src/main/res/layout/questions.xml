@@ -148,7 +148,8 @@
                     android:layout_weight="1"
                     android:text="@string/button"
                     android:textColor="@color/whiteColor"
-                    android:textSize="@dimen/text_size_small" />
+                    android:textSize="@dimen/text_size_small"
+                    android:buttonTint="@color/rb_color"/>
 
                 <RadioButton
                     android:id="@+id/answer_rb_2"
@@ -158,7 +159,8 @@
                     android:layout_weight="1"
                     android:text="@string/button"
                     android:textColor="@color/whiteColor"
-                    android:textSize="@dimen/text_size_small" />
+                    android:textSize="@dimen/text_size_small"
+                    android:buttonTint="@color/rb_color"/>
             </LinearLayout>
 
             <LinearLayout
@@ -176,7 +178,8 @@
                     android:layout_weight="1"
                     android:text="@string/button"
                     android:textColor="@color/whiteColor"
-                    android:textSize="@dimen/text_size_small" />
+                    android:textSize="@dimen/text_size_small"
+                    android:buttonTint="@color/rb_color"/>
 
                 <RadioButton
                     android:id="@+id/answer_rb_4"
@@ -186,7 +189,8 @@
                     android:layout_weight="1"
                     android:text="@string/button"
                     android:textColor="@color/whiteColor"
-                    android:textSize="20sp" />
+                    android:textSize="20sp"
+                    android:buttonTint="@color/rb_color" />
 
             </LinearLayout>
         </RadioGroup>

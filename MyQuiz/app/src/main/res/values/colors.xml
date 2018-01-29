@@ -12,5 +12,8 @@
     <color name="startBtn">#4772b3</color>
     <color name="accent">#FFEB3B</color>
 
+    <color name="rb_color">#fff</color>
+
+
 
 </resources>
