@@ -1,20 +1,21 @@
 package com.example.android.myquiz;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Questions extends AppCompatActivity {
 
@@ -62,6 +63,9 @@ public class Questions extends AppCompatActivity {
     //Переменная для количества неправильных ответов
     private int mUncorrectAnswer;
 
+    //Задержка, чтобы увидеть ответ РадиоБаттона
+    private Handler handler;
+
     //Массивы для хранения вопросов и правильных ответов
     private String[] mQuestionsList;
     private String[] mCorrectAnswers;
@@ -85,39 +89,14 @@ public class Questions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.questions);
 
+        init();
+
         if (savedInstanceState != null) {
             mUserName = savedInstanceState.getString(USER_NAME_EXTRA);
             mScore = savedInstanceState.getInt(SCORE);
             mHealth = savedInstanceState.getInt(HEALTH_POINTS);
             mQuestionNumber = savedInstanceState.getInt(QUESTION_NUMBER);
         }
-
-        score = findViewById(R.id.score);
-        hp = findViewById(R.id.tv_hp);
-        mQuestionView = findViewById(R.id.question);
-
-        mRadioGroup = (RadioGroup) findViewById(R.id.radio_gr);
-        mBtnGroup = (LinearLayout) findViewById(R.id.btn_group);
-
-        answerR1 = findViewById(R.id.answer_rb_1);
-        answerR2 = findViewById(R.id.answer_rb_2);
-        answerR3 = findViewById(R.id.answer_rb_3);
-        answerR4 = findViewById(R.id.answer_rb_4);
-
-        answer1 = findViewById(R.id.answer_1);
-        answer2 = findViewById(R.id.answer_2);
-        answer3 = findViewById(R.id.answer_3);
-        answer4 = findViewById(R.id.answer_4);
-
-        answer1.setOnClickListener(new QuestionListener());
-        answer2.setOnClickListener(new QuestionListener());
-        answer3.setOnClickListener(new QuestionListener());
-        answer4.setOnClickListener(new QuestionListener());
-
-        answerR1.setOnClickListener(new RBListener());
-        answerR2.setOnClickListener(new RBListener());
-        answerR3.setOnClickListener(new RBListener());
-        answerR4.setOnClickListener(new RBListener());
 
         Intent intent = getIntent();
         mUserName = intent.getStringExtra(USER_NAME_EXTRA);
@@ -158,27 +137,21 @@ public class Questions extends AppCompatActivity {
     }
 
     public class RBListener implements View.OnClickListener {
+        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onClick(View view) {
-            Handler handler = new Handler();
+
             RadioButton rb = (RadioButton) view;
             switch (rb.getId()) {
                 case R.id.answer_rb_1:
                     if (answerR1.isChecked()) {
                         answerR1.setTextColor(Color.GREEN);
+
                         answerR2.setEnabled(false);
                         answerR3.setEnabled(false);
                         answerR4.setEnabled(false);
                     }
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            updateScore();
-                            mQuestionNumber++;
-                            updateQuestion(mQuestionNumber);
-                            updateLL(mQuestionNumber);
-                        }
-                    }, 1000);
+                    handlerRb();
                     break;
                 case R.id.answer_rb_2:
                     if (answerR2.isChecked()) {
@@ -187,21 +160,7 @@ public class Questions extends AppCompatActivity {
                         answerR3.setEnabled(false);
                         answerR4.setEnabled(false);
                     }
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mQuestionNumber++;
-                            updateQuestion(mQuestionNumber);
-                            updateLL(mQuestionNumber);
-                            mUncorrectAnswer++;
-                            mHealth--;
-                            if (mHealth == 0) {
-                                gameOver();
-                                hideItems();
-                            }
-                            hp.setText(String.valueOf(mHealth));
-                        }
-                    }, 1000);
+                    handlerRb();
                     break;
                 case R.id.answer_rb_3:
                     if (answerR3.isChecked()) {
@@ -210,21 +169,7 @@ public class Questions extends AppCompatActivity {
                         answerR2.setEnabled(false);
                         answerR4.setEnabled(false);
                     }
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mQuestionNumber++;
-                            updateQuestion(mQuestionNumber);
-                            updateLL(mQuestionNumber);
-                            mUncorrectAnswer++;
-                            mHealth--;
-                            if (mHealth == 0) {
-                                gameOver();
-                                hideItems();
-                            }
-                            hp.setText(String.valueOf(mHealth));
-                        }
-                    }, 1000);
+                    handlerRb();
                     break;
                 case R.id.answer_rb_4:
                     if (answerR4.isChecked()) {
@@ -233,21 +178,7 @@ public class Questions extends AppCompatActivity {
                         answerR2.setEnabled(false);
                         answerR3.setEnabled(false);
                     }
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mQuestionNumber++;
-                            updateQuestion(mQuestionNumber);
-                            updateLL(mQuestionNumber);
-                            mUncorrectAnswer++;
-                            mHealth--;
-                            if (mHealth == 0) {
-                                gameOver();
-                                hideItems();
-                            }
-                            hp.setText(String.valueOf(mHealth));
-                        }
-                    }, 1000);
+                    handlerRb();
                     break;
 
                 default:
@@ -286,7 +217,7 @@ public class Questions extends AppCompatActivity {
     }
 
     private int updateLL(int n) {
-        if(n == 0) {
+        if (n == 0) {
             mRadioGroup.setVisibility(View.VISIBLE);
         }
         if (n > 0 && n < 10) {
@@ -340,7 +271,6 @@ public class Questions extends AppCompatActivity {
     }
 
 
-
     void createAlert(String message) {
         new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
                 .setMessage(message)
@@ -367,6 +297,49 @@ public class Questions extends AppCompatActivity {
         outState.putInt(Questions.QUESTION_NUMBER, mQuestionNumber);
 
         super.onSaveInstanceState(outState);
+    }
+
+    public void handlerRb() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                updateScore();
+                mQuestionNumber++;
+                updateQuestion(mQuestionNumber);
+                updateLL(mQuestionNumber);
+            }
+        }, 1000);
+    }
+
+    public void init() {
+        score = findViewById(R.id.score);
+        hp = findViewById(R.id.tv_hp);
+        mQuestionView = findViewById(R.id.question);
+
+        mRadioGroup = (RadioGroup) findViewById(R.id.radio_gr);
+        mBtnGroup = (LinearLayout) findViewById(R.id.btn_group);
+
+        answerR1 = findViewById(R.id.answer_rb_1);
+        answerR2 = findViewById(R.id.answer_rb_2);
+        answerR3 = findViewById(R.id.answer_rb_3);
+        answerR4 = findViewById(R.id.answer_rb_4);
+
+        answer1 = findViewById(R.id.answer_1);
+        answer2 = findViewById(R.id.answer_2);
+        answer3 = findViewById(R.id.answer_3);
+        answer4 = findViewById(R.id.answer_4);
+
+        answer1.setOnClickListener(new QuestionListener());
+        answer2.setOnClickListener(new QuestionListener());
+        answer3.setOnClickListener(new QuestionListener());
+        answer4.setOnClickListener(new QuestionListener());
+
+        answerR1.setOnClickListener(new RBListener());
+        answerR2.setOnClickListener(new RBListener());
+        answerR3.setOnClickListener(new RBListener());
+        answerR4.setOnClickListener(new RBListener());
+
+        handler = new Handler();
     }
 
 

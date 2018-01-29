@@ -33,5 +33,6 @@
     <dimen name="height">150dp</dimen>
     <dimen name="height_zero">0dp</dimen>
     <dimen name="width_zero">0dp</dimen>
+    <dimen name="margin_left_first_rb">10dp</dimen>
 
 </resources>
