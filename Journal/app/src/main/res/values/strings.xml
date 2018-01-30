@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Journal</string>
+    <string name="math">Math</string>
+    <string name="chemistry">Chemistry</string>
+    <string name="name">Name</string>
+    <string name="show_grade">Show grade</string>
+</resources>
