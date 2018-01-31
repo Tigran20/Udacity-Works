@@ -14,6 +14,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
 
     private TextView mQuestionTextView;
 
+
     private View mPrevButton;
     private View mNextButton;
 
@@ -22,6 +23,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private int mCurrentIndex = 0;
 
     private boolean answerIsTrue;
+
 
     private Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_australia, true),
@@ -63,9 +65,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.cheat_button:
                 answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
-                Intent cheat = new Intent(QuizActivity.this, CheatActivity.class);
-                cheat.putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue);
-                startActivity(cheat);
+                putExtraIntent();
         }
     }
 
@@ -88,5 +88,11 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
         mNextButton.setOnClickListener(this);
 
         mCheat.setOnClickListener(this);
+    }
+
+    private void putExtraIntent() {
+        Intent cheat = new Intent(QuizActivity.this, CheatActivity.class);
+        cheat.putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue);
+        startActivity(cheat);
     }
 }
