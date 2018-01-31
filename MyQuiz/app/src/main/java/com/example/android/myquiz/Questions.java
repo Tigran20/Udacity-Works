@@ -137,7 +137,6 @@ public class Questions extends AppCompatActivity {
     }
 
     public class RBListener implements View.OnClickListener {
-        @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
         @Override
         public void onClick(View view) {
             RadioButton rb = (RadioButton) view;
