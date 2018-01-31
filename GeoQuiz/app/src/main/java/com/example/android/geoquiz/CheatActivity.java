@@ -2,10 +2,9 @@ package com.example.android.geoquiz;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.content.Intent;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.widget.Button;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 
 public class CheatActivity extends AppCompatActivity {
 
-    private static final String EXTRA_ANSWER_IS_TRUE = "answerIsTrue";
+    public static final String EXTRA_ANSWER_IS_TRUE = "answerIsTrue";
 
     private boolean mAnswerIsTrue;
     private TextView mAnswerTextView;
@@ -24,7 +23,6 @@ public class CheatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cheat);
-
 
         init();
         getExtraIntent();
@@ -58,7 +56,6 @@ public class CheatActivity extends AppCompatActivity {
                 } else {
                     mShowAnswerButton.setVisibility(View.INVISIBLE);
                 }
-
             }
         });
     }
@@ -70,8 +67,8 @@ public class CheatActivity extends AppCompatActivity {
     }
 
     private void getExtraIntent() {
-        Intent intent = getIntent();
-        mAnswerIsTrue = intent.getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
+        mAnswerIsTrue = getIntent().getBooleanExtra(EXTRA_ANSWER_IS_TRUE, false);
     }
+
 
 }

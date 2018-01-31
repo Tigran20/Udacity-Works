@@ -10,10 +10,8 @@ import android.widget.TextView;
 public class QuizActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static final String KEY_INDEX = "index";
-    private static final String EXTRA_ANSWER_IS_TRUE = "answerIsTrue";
 
     private TextView mQuestionTextView;
-
 
     private View mPrevButton;
     private View mNextButton;
@@ -23,7 +21,6 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     private int mCurrentIndex = 0;
 
     private boolean answerIsTrue;
-
 
     private Question[] mQuestionBank = new Question[]{
             new Question(R.string.question_australia, true),
@@ -91,8 +88,7 @@ public class QuizActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void putExtraIntent() {
-        Intent cheat = new Intent(QuizActivity.this, CheatActivity.class);
-        cheat.putExtra(EXTRA_ANSWER_IS_TRUE, answerIsTrue);
-        startActivity(cheat);
+        startActivity(new Intent(QuizActivity.this, CheatActivity.class)
+                .putExtra(CheatActivity.EXTRA_ANSWER_IS_TRUE, answerIsTrue));
     }
 }
