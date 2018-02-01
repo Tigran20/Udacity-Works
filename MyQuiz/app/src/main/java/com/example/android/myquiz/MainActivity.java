@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -39,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
             }
         });
+
+
     }
 
     public void startQuizGame(View v) {
@@ -53,10 +56,21 @@ public class MainActivity extends AppCompatActivity {
         startQuizIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startQuizIntent.putExtra(Questions.USER_NAME_EXTRA, userName);
         startActivity(startQuizIntent);
+        hideKeyboard();
     }
 
     private boolean isUserNameNotCorrect(String userName) {
         return userName.isEmpty() || !userName.matches(USER_NAME_PATTERN);
+    }
+
+    private void hideKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
+        }
     }
 
 }

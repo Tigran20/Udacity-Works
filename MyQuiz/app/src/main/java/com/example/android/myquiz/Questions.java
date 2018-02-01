@@ -482,7 +482,6 @@ public class Questions extends AppCompatActivity {
             }
         });
 
-
         handler = new Handler();
 
     }
