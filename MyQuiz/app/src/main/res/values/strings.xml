@@ -93,6 +93,8 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="exit_question">Do you really want to quit ?</string>
-    <string name="space">" "</string> />
+    <string name="space">" "</string>
+    <string name="next">NEXT</string>
+    />
 
 </resources>

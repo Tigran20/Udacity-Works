@@ -157,5 +157,38 @@
 
             </LinearLayout>
         </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/edit_text_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/edit_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ems="10"
+                android:hint="Planet name"
+                android:imeOptions="actionDone"
+                android:inputType="textCapWords"
+                android:textAlignment="center"
+                android:textColor="@color/editTextColor"
+                android:textColorHint="@color/hintColor"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/next"
+                android:id="@+id/next_button"/>
+
+        </LinearLayout>
+
     </RelativeLayout>
 </LinearLayout>

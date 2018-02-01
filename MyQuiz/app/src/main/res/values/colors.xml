@@ -6,6 +6,9 @@
 
     <color name="customNavBar">#3a4796</color>
     <color name="whiteColor">#fff</color>
+    <color name="hintColor">#77ffeb3b</color>
+    <color name="editTextColor">#FFEB3B</color>
+
     <color name="blackColor">#000</color>
 
     <color name="primaryDark">#123551</color>
