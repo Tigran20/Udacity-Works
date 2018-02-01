@@ -45,6 +45,16 @@
         <item name="android:textSize">@dimen/text_size_small</item>
     </style>
 
+    <style name="CBStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/height_zero</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_weight">1</item>
+
+        <item name="android:textColor">@color/whiteColor</item>
+        <item name="android:textSize">@dimen/text_size_small</item>
+    </style>
+
     <style name="ButtonStyle" parent="Widget.AppCompat.Button.Borderless.Colored">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/height_zero</item>

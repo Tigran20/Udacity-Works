@@ -16,9 +16,9 @@
     <string name="question_4">"What is the hottest planet in the Solar system ?"</string>
     <string name="question_5">"What is the second planet from the sun ?"</string>
     <string name="question_6">"What is the official name of the planet 2003 UB313 ?"</string>
-    <string name="question_7">"Which planet is tilted on its side?"</string>
+    <string name="question_7">"The Moons of Mars ?"</string>
     <string name="question_8">"What is the third planet from the sun ?"</string>
-    <string name="question_9">"Which planet has the fastest winds in the solar system?"</string>
+    <string name="question_9">"Which planet has the fastest winds in the solar system ?"</string>
     <string name="question_10">"Which planet has the shortest day ?"</string>
 
 
@@ -52,10 +52,10 @@
     <string name="choice_3_6">"Ersa"</string>
     <string name="choice_4_6">"Earth"</string>
 
-    <string name="choice_1_7">"Uranus"</string>
-    <string name="choice_2_7">"Venus"</string>
-    <string name="choice_3_7">"Neptune"</string>
-    <string name="choice_4_7">"Pluto"</string>
+    <string name="choice_1_7">"Phobos"</string>
+    <string name="choice_2_7">"Io"</string>
+    <string name="choice_3_7">"Deimos"</string>
+    <string name="choice_4_7">"Moon"</string>
 
     <string name="choice_1_8">"Earth"</string>
     <string name="choice_2_8">"Venus"</string>

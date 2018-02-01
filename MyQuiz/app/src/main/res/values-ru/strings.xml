@@ -15,11 +15,11 @@
     <string name="question_3">Первая планета Солнечной системы ?"</string>
     <string name="question_4">Самая горячая планета Солнечной системы ?"</string>
     <string name="question_5">Вторая планета от Солнца ?"</string>
-    <string name="question_6">Какое официальное название планеты 2003 UB313?"</string>
-    <string name="question_7">"Какая планета наклонена на бок?"</string>
+    <string name="question_6">Какое официальное название планеты 2003 UB313 ?"</string>
+    <string name="question_7">"Спутники Марса ?"</string>
     <string name="question_8">"Третья планета Солнечной системы ?"</string>
-    <string name="question_9">"Какая планета имеет самые быстрые ветры в Солнечной системе?"</string>
-    <string name="question_10">"На какой планете самый короткий день?"</string>
+    <string name="question_9">"Какая планета имеет самые быстрые ветры в Солнечной системе ?"</string>
+    <string name="question_10">"На какой планете самый короткий день ?"</string>
 
     <string name="choice_1">Сатурн</string>
     <string name="choice_2">Марс</string>
@@ -51,10 +51,10 @@
     <string name="choice_3_6">"Эрса"</string>
     <string name="choice_4_6">"Земля"</string>
 
-    <string name="choice_1_7">"Уран"</string>
-    <string name="choice_2_7">"Венера"</string>
-    <string name="choice_3_7">"Нептун"</string>
-    <string name="choice_4_7">"Плутон"</string>
+    <string name="choice_1_7">"Фобос"</string>
+    <string name="choice_2_7">"Ио"</string>
+    <string name="choice_3_7">"Деймос"</string>
+    <string name="choice_4_7">"Луна"</string>
 
     <string name="choice_1_8">"Земля"</string>
     <string name="choice_2_8">"Венера"</string>

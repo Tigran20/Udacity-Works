@@ -7,18 +7,15 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class Questions extends AppCompatActivity {
 
@@ -48,8 +45,14 @@ public class Questions extends AppCompatActivity {
     private RadioButton answerR3;
     private RadioButton answerR4;
 
+    private CheckBox answerCB1;
+    private CheckBox answerCB2;
+    private CheckBox answerCB3;
+    private CheckBox answerCB4;
+
     private EditText mAnswerET;
     private Button mNext;
+    private Button mNextCB;
 
     //Переменная для правильного ответа
     private String mAnswer;
@@ -66,6 +69,7 @@ public class Questions extends AppCompatActivity {
     private RadioGroup mRadioGroup;
     private View mBtnGroup;
     private View mEtField;
+    private View mCBGroup;
 
     //Переменная для количества неправильных ответов
     private int mUncorrectAnswer;
@@ -191,6 +195,36 @@ public class Questions extends AppCompatActivity {
         }
     }
 
+    private class CBListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View view) {
+            CheckBox cb = (CheckBox) view;
+            switch (cb.getId()) {
+                case R.id.answer_cb_1:
+                    if (answerCB1.isChecked()) {
+                        answerCB1.setTextColor(Color.GREEN);
+                    }
+                    break;
+                case R.id.answer_cb_2:
+                    if (answerCB2.isChecked()) {
+                        answerCB2.setTextColor(Color.RED);
+                    }
+                    break;
+                case R.id.answer_cb_3:
+                    if (answerCB3.isChecked()) {
+                        answerCB3.setTextColor(Color.GREEN);
+                    }
+                    break;
+                case R.id.answer_cb_4:
+                    if (answerCB4.isChecked()) {
+                        answerCB4.setTextColor(Color.RED);
+                    }
+                    break;
+            }
+        }
+    }
+
 
     private void updateQuestion(int Question) {
         if (mQuestionNumber < mQuestionsList.length) {
@@ -205,6 +239,11 @@ public class Questions extends AppCompatActivity {
             answer2.setText(mChoices[mQuestionNumber][1]);
             answer3.setText(mChoices[mQuestionNumber][2]);
             answer4.setText(mChoices[mQuestionNumber][3]);
+
+            answerCB1.setText(mChoices[mQuestionNumber][0]);
+            answerCB2.setText(mChoices[mQuestionNumber][1]);
+            answerCB3.setText(mChoices[mQuestionNumber][2]);
+            answerCB4.setText(mChoices[mQuestionNumber][3]);
 
             mAnswer = mCorrectAnswers[mQuestionNumber];
         } else if (mScore > 6) {
@@ -227,18 +266,35 @@ public class Questions extends AppCompatActivity {
             mRadioGroup.setVisibility(View.VISIBLE);
             mEtField.setVisibility(View.INVISIBLE);
             mBtnGroup.setVisibility(View.INVISIBLE);
+            mCBGroup.setVisibility(View.INVISIBLE);
+            mNextCB.setVisibility(View.INVISIBLE);
+            mNext.setVisibility(View.INVISIBLE);
 
         }
         if (n > 0 && n < 10 && n != 4) {
             mBtnGroup.setVisibility(View.VISIBLE);
             mRadioGroup.setVisibility(View.INVISIBLE);
             mEtField.setVisibility(View.INVISIBLE);
+            mCBGroup.setVisibility(View.INVISIBLE);
+            mNextCB.setVisibility(View.INVISIBLE);
+            mNext.setVisibility(View.INVISIBLE);
         }
 
         if (n == 4) {
             mEtField.setVisibility(View.VISIBLE);
             mRadioGroup.setVisibility(View.INVISIBLE);
             mBtnGroup.setVisibility(View.INVISIBLE);
+            mCBGroup.setVisibility(View.INVISIBLE);
+            mNextCB.setVisibility(View.INVISIBLE);
+            mNext.setVisibility(View.VISIBLE);
+        }
+
+        if (n == 6) {
+            mEtField.setVisibility(View.INVISIBLE);
+            mRadioGroup.setVisibility(View.INVISIBLE);
+            mBtnGroup.setVisibility(View.INVISIBLE);
+            mCBGroup.setVisibility(View.VISIBLE);
+            mNextCB.setVisibility(View.VISIBLE);
         }
         return n;
     }
@@ -342,9 +398,11 @@ public class Questions extends AppCompatActivity {
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_gr);
         mBtnGroup = (LinearLayout) findViewById(R.id.btn_group);
         mEtField = (LinearLayout) findViewById(R.id.edit_text_answer);
+        mCBGroup = (LinearLayout) findViewById(R.id.checkbox_gr);
 
         mAnswerET = (EditText) findViewById(R.id.edit_text);
         mNext = (Button) findViewById(R.id.next_button);
+        mNextCB = (Button) findViewById(R.id.next_button_cb);
 
         answerR1 = findViewById(R.id.answer_rb_1);
         answerR2 = findViewById(R.id.answer_rb_2);
@@ -356,6 +414,11 @@ public class Questions extends AppCompatActivity {
         answer3 = findViewById(R.id.answer_3);
         answer4 = findViewById(R.id.answer_4);
 
+        answerCB1 = findViewById(R.id.answer_cb_1);
+        answerCB2 = findViewById(R.id.answer_cb_2);
+        answerCB3 = findViewById(R.id.answer_cb_3);
+        answerCB4 = findViewById(R.id.answer_cb_4);
+
         answer1.setOnClickListener(new QuestionListener());
         answer2.setOnClickListener(new QuestionListener());
         answer3.setOnClickListener(new QuestionListener());
@@ -365,6 +428,11 @@ public class Questions extends AppCompatActivity {
         answerR2.setOnClickListener(new RBListener());
         answerR3.setOnClickListener(new RBListener());
         answerR4.setOnClickListener(new RBListener());
+
+        answerCB1.setOnClickListener(new CBListener());
+        answerCB2.setOnClickListener(new CBListener());
+        answerCB3.setOnClickListener(new CBListener());
+        answerCB4.setOnClickListener(new CBListener());
 
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -389,6 +457,31 @@ public class Questions extends AppCompatActivity {
                 }
             }
         });
+
+        mNextCB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(answerCB1.isChecked() && answerCB3.isChecked()) {
+                    updateScore();
+                    mQuestionNumber++;
+                    updateQuestion(mQuestionNumber);
+                    updateLL(mQuestionNumber);
+                }
+                else {
+                    mQuestionNumber++;
+                    updateQuestion(mQuestionNumber);
+                    updateLL(mQuestionNumber);
+                    mUncorrectAnswer++;
+                    mHealth--;
+                    if (mHealth == 0) {
+                        gameOver();
+                        hideItems();
+                    }
+                    hp.setText(String.valueOf(mHealth));
+                }
+            }
+        });
+
 
         handler = new Handler();
 
