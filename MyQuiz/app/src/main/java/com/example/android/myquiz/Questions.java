@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Questions extends AppCompatActivity {
 
@@ -154,42 +155,57 @@ public class Questions extends AppCompatActivity {
             switch (rb.getId()) {
                 case R.id.answer_rb_1:
                     if (mAnswerRB1.isChecked()) {
-                        mAnswerRB1.setTextColor(Color.GREEN);
+//                        mAnswerRB1.setTextColor(Color.GREEN);
                         mAnswerRB2.setEnabled(false);
                         mAnswerRB3.setEnabled(false);
                         mAnswerRB4.setEnabled(false);
+                        updateScore();
+                        mQuestionNumber++;
+                        updateQuestion(mQuestionNumber);
+                        updateLL(mQuestionNumber);
                     }
-                    handlerRb();
-                    updateScore();
+//                    handlerRb();
                     break;
                 case R.id.answer_rb_2:
                     if (mAnswerRB2.isChecked()) {
-                        mAnswerRB2.setTextColor(Color.RED);
+//                        mAnswerRB2.setTextColor(Color.RED);
                         mAnswerRB1.setEnabled(false);
                         mAnswerRB3.setEnabled(false);
                         mAnswerRB4.setEnabled(false);
+
+                        mQuestionNumber++;
+                        updateQuestion(mQuestionNumber);
+                        updateLL(mQuestionNumber);
                     }
-                    handlerRb();
+//                    handlerRb();
                     lessHpForRadioButton();
                     break;
                 case R.id.answer_rb_3:
                     if (mAnswerRB3.isChecked()) {
-                        mAnswerRB3.setTextColor(Color.RED);
+//                        mAnswerRB3.setTextColor(Color.RED);
                         mAnswerRB1.setEnabled(false);
                         mAnswerRB2.setEnabled(false);
                         mAnswerRB4.setEnabled(false);
+
+                        mQuestionNumber++;
+                        updateQuestion(mQuestionNumber);
+                        updateLL(mQuestionNumber);
                     }
-                    handlerRb();
+//                    handlerRb();
                     lessHpForRadioButton();
                     break;
                 case R.id.answer_rb_4:
                     if (mAnswerRB4.isChecked()) {
-                        mAnswerRB4.setTextColor(Color.RED);
+//                        mAnswerRB4.setTextColor(Color.RED);
                         mAnswerRB1.setEnabled(false);
                         mAnswerRB2.setEnabled(false);
                         mAnswerRB3.setEnabled(false);
+
+                        mQuestionNumber++;
+                        updateQuestion(mQuestionNumber);
+                        updateLL(mQuestionNumber);
                     }
-                    handlerRb();
+//                    handlerRb();
                     lessHpForRadioButton();
                     break;
 
@@ -254,7 +270,7 @@ public class Questions extends AppCompatActivity {
             hideItems();
         } else
             gameWin();
-            hideItems();
+        hideItems();
     }
 
     private void hideItems() {
@@ -385,16 +401,16 @@ public class Questions extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-    public void handlerRb() {
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mQuestionNumber++;
-                updateQuestion(mQuestionNumber);
-                updateLL(mQuestionNumber);
-            }
-        }, 500);
-    }
+//    public void handlerRb() {
+//        handler.postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                mQuestionNumber++;
+//                updateQuestion(mQuestionNumber);
+//                updateLL(mQuestionNumber);
+//            }
+//        }, 300);
+//    }
 
     public void lessHpForRadioButton() {
         mUncorrectAnswer++;
@@ -455,7 +471,10 @@ public class Questions extends AppCompatActivity {
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
-                } else {
+                } else if(mAnswerET.getText().toString().length() == 0) {
+                    Toast.makeText(getApplicationContext(), R.string.enter_your_text, Toast.LENGTH_SHORT).show();
+                }
+                else {
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
@@ -473,12 +492,28 @@ public class Questions extends AppCompatActivity {
         mNextCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mAnswerCB1.isChecked() && mAnswerCB3.isChecked()) {
+                if (mAnswerCB1.isChecked() && mAnswerCB3.isChecked() && !mAnswerCB2.isChecked() && !mAnswerCB4.isChecked()) {
                     updateScore();
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
-                } else {
+                } else if(mAnswerCB1.isChecked() && mAnswerCB2.isChecked() && mAnswerCB3.isChecked() && mAnswerCB4.isChecked()){
+                    mQuestionNumber++;
+                    updateQuestion(mQuestionNumber);
+                    updateLL(mQuestionNumber);
+                    mUncorrectAnswer++;
+                    mHealth--;
+                    if (mHealth == 0) {
+                        gameOver();
+                        hideItems();
+                    }
+                    mHealthPointsTV.setText(String.valueOf(mHealth));
+                }
+
+                else if(!mAnswerCB1.isChecked() && !mAnswerCB3.isChecked() && !mAnswerCB2.isChecked() && !mAnswerCB4.isChecked()){
+                    Toast.makeText(getApplicationContext(), R.string.choose_one_answer, Toast.LENGTH_SHORT).show();
+                }
+                else {
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);

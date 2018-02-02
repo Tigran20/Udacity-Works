@@ -95,6 +95,9 @@
     <string name="exit_question">Do you really want to quit ?</string>
     <string name="space">" "</string>
     <string name="next">NEXT</string>
+    <string name="planet_name">Planet name</string>
+    <string name="enter_your_text">Enter your text</string>
+    <string name="choose_one_answer">Choose one answer</string>
     />
 
 </resources>

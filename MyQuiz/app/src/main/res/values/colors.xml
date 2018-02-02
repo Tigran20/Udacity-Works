@@ -13,6 +13,7 @@
 
     <color name="primaryDark">#123551</color>
     <color name="startBtn">#2268d2</color>
+    <color name="questionBtn">#a70b4bac</color>
     <color name="accent">#FFEB3B</color>
 
     <color name="rb_color">#fff</color>
