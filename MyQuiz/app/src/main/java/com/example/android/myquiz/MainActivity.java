@@ -1,10 +1,12 @@
 package com.example.android.myquiz;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -21,27 +23,9 @@ public class MainActivity extends AppCompatActivity {
 
         mUserNameInput = findViewById(R.id.ed_user_name);
 
-        mUserNameInput.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void afterTextChanged(Editable s) {
-                if (mUserNameInput.getText().toString().equals("")) {
-                    mUserNameInput.setCursorVisible(true);
-                } else {
-                    mUserNameInput.setCursorVisible(false);
-                }
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                mUserNameInput.setCursorVisible(true);
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        });
-
-
+        Intent intent = getIntent();
+        String text = intent.getStringExtra(Questions.USER_NAME_EXTRA);
+        mUserNameInput.setText(text);
     }
 
     public void startQuizGame(View v) {
@@ -65,12 +49,24 @@ public class MainActivity extends AppCompatActivity {
 
     private void hideKeyboard() {
         View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-            if (imm != null) {
-                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-            }
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        if (view != null && imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        if(ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View view = getCurrentFocus();
+            if(view instanceof EditText) {
+
+                view.clearFocus();
+                hideKeyboard();
+            }
+        }
+
+        return super.dispatchTouchEvent(ev);
+    }
 }

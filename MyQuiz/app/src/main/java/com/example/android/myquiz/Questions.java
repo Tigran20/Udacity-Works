@@ -1,5 +1,6 @@
 package com.example.android.myquiz;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -30,25 +32,25 @@ public class Questions extends AppCompatActivity {
 
     //Вьюхи для отображения счета, хп и вопроса
     private TextView score;
-    private TextView hp;
-    private TextView mQuestionView;
+    private TextView mHealthPointsTV;
+    private TextView mQuestionViewTV;
 
     //Кнопки с вариантами ответов
-    private Button answer1;
-    private Button answer2;
-    private Button answer3;
-    private Button answer4;
+    private Button mAnswerBtn1;
+    private Button mAnswerBtn2;
+    private Button mAnswerBtn3;
+    private Button mAnswerBtn4;
 
     //РадиоБаттоны с вариантами ответов
-    private RadioButton answerR1;
-    private RadioButton answerR2;
-    private RadioButton answerR3;
-    private RadioButton answerR4;
+    private RadioButton mAnswerRB1;
+    private RadioButton mAnswerRB2;
+    private RadioButton mAnswerRB3;
+    private RadioButton mAnswerRB4;
 
-    private CheckBox answerCB1;
-    private CheckBox answerCB2;
-    private CheckBox answerCB3;
-    private CheckBox answerCB4;
+    private CheckBox mAnswerCB1;
+    private CheckBox mAnswerCB2;
+    private CheckBox mAnswerCB3;
+    private CheckBox mAnswerCB4;
 
     private EditText mAnswerET;
     private Button mNext;
@@ -118,7 +120,8 @@ public class Questions extends AppCompatActivity {
         score.setText(getString(R.string.score) + getString(R.string.space) + mScore);
 
         updateQuestion(mQuestionNumber);
-        hp.setText(String.valueOf(mHealth));
+
+        mHealthPointsTV.setText(String.valueOf(mHealth));
 
         updateLL(mQuestionNumber);
     }
@@ -142,7 +145,7 @@ public class Questions extends AppCompatActivity {
                     gameOver();
                     hideItems();
                 }
-                hp.setText(String.valueOf(mHealth));
+                mHealthPointsTV.setText(String.valueOf(mHealth));
             }
         }
     }
@@ -153,38 +156,39 @@ public class Questions extends AppCompatActivity {
             RadioButton rb = (RadioButton) view;
             switch (rb.getId()) {
                 case R.id.answer_rb_1:
-                    if (answerR1.isChecked()) {
-                        answerR1.setTextColor(Color.GREEN);
-                        answerR2.setEnabled(false);
-                        answerR3.setEnabled(false);
-                        answerR4.setEnabled(false);
+                    if (mAnswerRB1.isChecked()) {
+                        mAnswerRB1.setTextColor(Color.GREEN);
+                        mAnswerRB2.setEnabled(false);
+                        mAnswerRB3.setEnabled(false);
+                        mAnswerRB4.setEnabled(false);
                     }
                     handlerRb();
                     break;
                 case R.id.answer_rb_2:
-                    if (answerR2.isChecked()) {
-                        answerR2.setTextColor(Color.RED);
-                        answerR1.setEnabled(false);
-                        answerR3.setEnabled(false);
-                        answerR4.setEnabled(false);
+                    if (mAnswerRB2.isChecked()) {
+                        mAnswerRB2.setTextColor(Color.RED);
+                        mAnswerRB1.setEnabled(false);
+                        mAnswerRB3.setEnabled(false);
+                        mAnswerRB4.setEnabled(false);
                     }
                     lessHpForRadioButton();
                     break;
                 case R.id.answer_rb_3:
-                    if (answerR3.isChecked()) {
-                        answerR3.setTextColor(Color.RED);
-                        answerR1.setEnabled(false);
-                        answerR2.setEnabled(false);
-                        answerR4.setEnabled(false);
+                    if (mAnswerRB3.isChecked()) {
+                        mAnswerRB3.setTextColor(Color.RED);
+                        mAnswerRB1.setEnabled(false);
+                        mAnswerRB2.setEnabled(false);
+                        mAnswerRB4.setEnabled(false);
                     }
+
                     lessHpForRadioButton();
                     break;
                 case R.id.answer_rb_4:
-                    if (answerR4.isChecked()) {
-                        answerR4.setTextColor(Color.RED);
-                        answerR1.setEnabled(false);
-                        answerR2.setEnabled(false);
-                        answerR3.setEnabled(false);
+                    if (mAnswerRB4.isChecked()) {
+                        mAnswerRB4.setTextColor(Color.RED);
+                        mAnswerRB1.setEnabled(false);
+                        mAnswerRB2.setEnabled(false);
+                        mAnswerRB3.setEnabled(false);
                     }
                     lessHpForRadioButton();
                     break;
@@ -202,23 +206,23 @@ public class Questions extends AppCompatActivity {
             CheckBox cb = (CheckBox) view;
             switch (cb.getId()) {
                 case R.id.answer_cb_1:
-                    if (answerCB1.isChecked()) {
-                        answerCB1.setTextColor(Color.GREEN);
+                    if (mAnswerCB1.isChecked()) {
+                        mAnswerCB1.setTextColor(Color.GREEN);
                     }
                     break;
                 case R.id.answer_cb_2:
-                    if (answerCB2.isChecked()) {
-                        answerCB2.setTextColor(Color.RED);
+                    if (mAnswerCB2.isChecked()) {
+                        mAnswerCB2.setTextColor(Color.RED);
                     }
                     break;
                 case R.id.answer_cb_3:
-                    if (answerCB3.isChecked()) {
-                        answerCB3.setTextColor(Color.GREEN);
+                    if (mAnswerCB3.isChecked()) {
+                        mAnswerCB3.setTextColor(Color.GREEN);
                     }
                     break;
                 case R.id.answer_cb_4:
-                    if (answerCB4.isChecked()) {
-                        answerCB4.setTextColor(Color.RED);
+                    if (mAnswerCB4.isChecked()) {
+                        mAnswerCB4.setTextColor(Color.RED);
                     }
                     break;
             }
@@ -228,22 +232,22 @@ public class Questions extends AppCompatActivity {
 
     private void updateQuestion(int Question) {
         if (mQuestionNumber < mQuestionsList.length) {
-            mQuestionView.setText(mQuestionsList[mQuestionNumber]);
+            mQuestionViewTV.setText(mQuestionsList[mQuestionNumber]);
 
-            answerR1.setText(mChoices[mQuestionNumber][0]);
-            answerR2.setText(mChoices[mQuestionNumber][1]);
-            answerR3.setText(mChoices[mQuestionNumber][2]);
-            answerR4.setText(mChoices[mQuestionNumber][3]);
+            mAnswerBtn1.setText(mChoices[mQuestionNumber][0]);
+            mAnswerBtn2.setText(mChoices[mQuestionNumber][1]);
+            mAnswerBtn3.setText(mChoices[mQuestionNumber][2]);
+            mAnswerBtn4.setText(mChoices[mQuestionNumber][3]);
 
-            answer1.setText(mChoices[mQuestionNumber][0]);
-            answer2.setText(mChoices[mQuestionNumber][1]);
-            answer3.setText(mChoices[mQuestionNumber][2]);
-            answer4.setText(mChoices[mQuestionNumber][3]);
+            mAnswerCB1.setText(mChoices[mQuestionNumber][0]);
+            mAnswerCB2.setText(mChoices[mQuestionNumber][1]);
+            mAnswerCB3.setText(mChoices[mQuestionNumber][2]);
+            mAnswerCB4.setText(mChoices[mQuestionNumber][3]);
 
-            answerCB1.setText(mChoices[mQuestionNumber][0]);
-            answerCB2.setText(mChoices[mQuestionNumber][1]);
-            answerCB3.setText(mChoices[mQuestionNumber][2]);
-            answerCB4.setText(mChoices[mQuestionNumber][3]);
+            mAnswerRB1.setText(mChoices[mQuestionNumber][0]);
+            mAnswerRB2.setText(mChoices[mQuestionNumber][1]);
+            mAnswerRB3.setText(mChoices[mQuestionNumber][2]);
+            mAnswerRB4.setText(mChoices[mQuestionNumber][3]);
 
             mAnswer = mCorrectAnswers[mQuestionNumber];
         } else if (mScore > 6) {
@@ -254,14 +258,14 @@ public class Questions extends AppCompatActivity {
     }
 
     private void hideItems() {
-        mQuestionView.setVisibility(View.INVISIBLE);
+        mQuestionViewTV.setVisibility(View.INVISIBLE);
         score.setVisibility(View.INVISIBLE);
         mBtnGroup.setVisibility(View.INVISIBLE);
         mRadioGroup.setVisibility(View.INVISIBLE);
         mEtField.setVisibility(View.INVISIBLE);
     }
 
-    private int updateLL(int n) {
+    private void updateLL(int n) {
         if (n == 0) {
             mRadioGroup.setVisibility(View.VISIBLE);
             mEtField.setVisibility(View.INVISIBLE);
@@ -269,9 +273,20 @@ public class Questions extends AppCompatActivity {
             mCBGroup.setVisibility(View.INVISIBLE);
             mNextCB.setVisibility(View.INVISIBLE);
             mNext.setVisibility(View.INVISIBLE);
-
-        }
-        if (n > 0 && n < 10 && n != 4) {
+        } else if (n == 4) {
+            mEtField.setVisibility(View.VISIBLE);
+            mRadioGroup.setVisibility(View.INVISIBLE);
+            mBtnGroup.setVisibility(View.INVISIBLE);
+            mCBGroup.setVisibility(View.INVISIBLE);
+            mNextCB.setVisibility(View.INVISIBLE);
+            mNext.setVisibility(View.VISIBLE);
+        } else if (n == 6) {
+            mEtField.setVisibility(View.INVISIBLE);
+            mRadioGroup.setVisibility(View.INVISIBLE);
+            mBtnGroup.setVisibility(View.INVISIBLE);
+            mCBGroup.setVisibility(View.VISIBLE);
+            mNextCB.setVisibility(View.VISIBLE);
+        } else if (n < 10) {
             mBtnGroup.setVisibility(View.VISIBLE);
             mRadioGroup.setVisibility(View.INVISIBLE);
             mEtField.setVisibility(View.INVISIBLE);
@@ -279,24 +294,6 @@ public class Questions extends AppCompatActivity {
             mNextCB.setVisibility(View.INVISIBLE);
             mNext.setVisibility(View.INVISIBLE);
         }
-
-        if (n == 4) {
-            mEtField.setVisibility(View.VISIBLE);
-            mRadioGroup.setVisibility(View.INVISIBLE);
-            mBtnGroup.setVisibility(View.INVISIBLE);
-            mCBGroup.setVisibility(View.INVISIBLE);
-            mNextCB.setVisibility(View.INVISIBLE);
-            mNext.setVisibility(View.VISIBLE);
-        }
-
-        if (n == 6) {
-            mEtField.setVisibility(View.INVISIBLE);
-            mRadioGroup.setVisibility(View.INVISIBLE);
-            mBtnGroup.setVisibility(View.INVISIBLE);
-            mCBGroup.setVisibility(View.VISIBLE);
-            mNextCB.setVisibility(View.VISIBLE);
-        }
-        return n;
     }
 
     private void updateScore() {
@@ -356,7 +353,11 @@ public class Questions extends AppCompatActivity {
                 .setPositiveButton(R.string.new_game, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface arg0, int arg1) {
                         finish();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                        Intent startMainIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        startMainIntent.putExtra(USER_NAME_EXTRA, mUserName);
+
+                        startActivity(startMainIntent);
                     }
                 }).create().show();
     }
@@ -386,14 +387,14 @@ public class Questions extends AppCompatActivity {
     public void lessHpForRadioButton() {
         mUncorrectAnswer++;
         mHealth--;
-        hp.setText(String.valueOf(mHealth));
+        mHealthPointsTV.setText(String.valueOf(mHealth));
         handlerRb();
     }
 
     public void init() {
         score = findViewById(R.id.score);
-        hp = findViewById(R.id.tv_hp);
-        mQuestionView = findViewById(R.id.question);
+        mHealthPointsTV = findViewById(R.id.tv_hp);
+        mQuestionViewTV = findViewById(R.id.question);
 
         mRadioGroup = (RadioGroup) findViewById(R.id.radio_gr);
         mBtnGroup = (LinearLayout) findViewById(R.id.btn_group);
@@ -404,40 +405,41 @@ public class Questions extends AppCompatActivity {
         mNext = (Button) findViewById(R.id.next_button);
         mNextCB = (Button) findViewById(R.id.next_button_cb);
 
-        answerR1 = findViewById(R.id.answer_rb_1);
-        answerR2 = findViewById(R.id.answer_rb_2);
-        answerR3 = findViewById(R.id.answer_rb_3);
-        answerR4 = findViewById(R.id.answer_rb_4);
+        mAnswerRB1 = findViewById(R.id.answer_rb_1);
+        mAnswerRB2 = findViewById(R.id.answer_rb_2);
+        mAnswerRB3 = findViewById(R.id.answer_rb_3);
+        mAnswerRB4 = findViewById(R.id.answer_rb_4);
 
-        answer1 = findViewById(R.id.answer_1);
-        answer2 = findViewById(R.id.answer_2);
-        answer3 = findViewById(R.id.answer_3);
-        answer4 = findViewById(R.id.answer_4);
+        mAnswerBtn1 = findViewById(R.id.answer_1);
+        mAnswerBtn2 = findViewById(R.id.answer_2);
+        mAnswerBtn3 = findViewById(R.id.answer_3);
+        mAnswerBtn4 = findViewById(R.id.answer_4);
 
-        answerCB1 = findViewById(R.id.answer_cb_1);
-        answerCB2 = findViewById(R.id.answer_cb_2);
-        answerCB3 = findViewById(R.id.answer_cb_3);
-        answerCB4 = findViewById(R.id.answer_cb_4);
+        mAnswerCB1 = findViewById(R.id.answer_cb_1);
+        mAnswerCB2 = findViewById(R.id.answer_cb_2);
+        mAnswerCB3 = findViewById(R.id.answer_cb_3);
+        mAnswerCB4 = findViewById(R.id.answer_cb_4);
 
-        answer1.setOnClickListener(new QuestionListener());
-        answer2.setOnClickListener(new QuestionListener());
-        answer3.setOnClickListener(new QuestionListener());
-        answer4.setOnClickListener(new QuestionListener());
+        mAnswerBtn1.setOnClickListener(new QuestionListener());
+        mAnswerBtn2.setOnClickListener(new QuestionListener());
+        mAnswerBtn3.setOnClickListener(new QuestionListener());
+        mAnswerBtn4.setOnClickListener(new QuestionListener());
 
-        answerR1.setOnClickListener(new RBListener());
-        answerR2.setOnClickListener(new RBListener());
-        answerR3.setOnClickListener(new RBListener());
-        answerR4.setOnClickListener(new RBListener());
+        mAnswerRB1.setOnClickListener(new RBListener());
+        mAnswerRB2.setOnClickListener(new RBListener());
+        mAnswerRB3.setOnClickListener(new RBListener());
+        mAnswerRB4.setOnClickListener(new RBListener());
 
-        answerCB1.setOnClickListener(new CBListener());
-        answerCB2.setOnClickListener(new CBListener());
-        answerCB3.setOnClickListener(new CBListener());
-        answerCB4.setOnClickListener(new CBListener());
+        mAnswerCB1.setOnClickListener(new CBListener());
+        mAnswerCB2.setOnClickListener(new CBListener());
+        mAnswerCB3.setOnClickListener(new CBListener());
+        mAnswerCB4.setOnClickListener(new CBListener());
 
         mNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mAnswerET.getText().toString().equals("Venus") || mAnswerET.getText().toString().equals("venus")) {
+                if (mAnswerET.getText().toString().equalsIgnoreCase("Venus") ||
+                        mAnswerET.getText().toString().equalsIgnoreCase("Венера")) {
                     updateScore();
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
@@ -453,7 +455,8 @@ public class Questions extends AppCompatActivity {
                         gameOver();
                         hideItems();
                     }
-                    hp.setText(String.valueOf(mHealth));
+                    mHealthPointsTV.setText(String.valueOf(mHealth));
+                    hideKeyboard();
                 }
             }
         });
@@ -461,13 +464,12 @@ public class Questions extends AppCompatActivity {
         mNextCB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(answerCB1.isChecked() && answerCB3.isChecked()) {
+                if (mAnswerCB1.isChecked() && mAnswerCB3.isChecked()) {
                     updateScore();
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
-                }
-                else {
+                } else {
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
@@ -477,7 +479,7 @@ public class Questions extends AppCompatActivity {
                         gameOver();
                         hideItems();
                     }
-                    hp.setText(String.valueOf(mHealth));
+                    mHealthPointsTV.setText(String.valueOf(mHealth));
                 }
             }
         });
@@ -488,12 +490,25 @@ public class Questions extends AppCompatActivity {
 
     private void hideKeyboard() {
         View view = this.getCurrentFocus();
-        if (view != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-            if (imm != null) {
-                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        if (view != null && imm != null) {
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        if(ev.getAction() == MotionEvent.ACTION_DOWN) {
+            View view = getCurrentFocus();
+            if(view instanceof EditText) {
+
+                view.clearFocus();
+                hideKeyboard();
             }
         }
+
+        return super.dispatchTouchEvent(ev);
     }
 
 
