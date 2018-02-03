@@ -41,14 +41,14 @@
         <TextView
             style="@style/text_view_style"
             android:layout_marginBottom="@dimen/margin_bottom"
-            android:text="@string/site" />
+            android:text="@string/site"
+            android:autoLink="web"
+            android:textColorLink="@color/text_color_black"/>
 
         <TextView
             style="@style/text_view_style"
             android:layout_marginBottom="@dimen/margin_bottom_large"
-            android:text="@string/street"
-
-            />
+            android:text="@string/street" />
 
         <TextView
             android:layout_width="match_parent"
