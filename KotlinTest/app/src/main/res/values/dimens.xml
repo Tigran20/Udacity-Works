@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--Паддинги root-->
+    <dimen name="padding_16">16dp</dimen>
+
+    <!--Свойства TextView-->
+    <dimen name="text_size_28">28sp</dimen>
+    <dimen name="margin_bottom_16">16dp</dimen>
+
+    <!--Кнопки-->
+    <dimen name="margin_right_8">8dp</dimen>
+
+</resources>

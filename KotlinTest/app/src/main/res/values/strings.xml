@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">KotlinTest</string>
+
+    <!--Надписи в TextView-->
+    <string name="hello_from_alex">Привет от Алекса</string>
+    <string name="hello_from_kotlin">Привет от Котлина \n Му-ха-ха!</string>
+
+    <!--Кнопки-->
+    <string name="press_kotlin">Кот</string>
+    <string name="press_alex">Алекс</string>
+    <string name="change_text_color">Смена цвета текста</string>
+    <string name="default_text_color">Стнд. цвет текста</string>
+
+</resources>
