@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorBackground">#dfdedb</color>
-    <color name="udacity_color">#90CAF9</color>
-    <color name="text_color_black">#000</color>
+
+    <color name="udacityColor">#90CAF9</color>
+
+    <color name="textColorBlack">#000</color>
+
 </resources>

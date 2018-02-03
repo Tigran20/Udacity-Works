@@ -28,7 +28,7 @@
             android:layout_marginBottom="@dimen/margin_bottom"
             android:gravity="center"
             android:text="@string/udacity"
-            android:textColor="@color/udacity_color"
+            android:textColor="@color/udacityColor"
             android:textSize="@dimen/udacity_text_size"
             android:textStyle="bold" />
 
@@ -36,7 +36,9 @@
 
             style="@style/text_view_style"
             android:layout_marginBottom="@dimen/margin_bottom"
-            android:text="@string/phone" />
+            android:autoLink="phone"
+            android:text="@string/phone"
+            android:textColorLink="@color/textColorBlack" />
 
         <TextView
             android:id="@+id/udacity_web"
@@ -44,7 +46,7 @@
             android:layout_marginBottom="@dimen/margin_bottom"
             android:autoLink="web"
             android:text="@string/site"
-            android:textColorLink="@color/text_color_black" />
+            android:textColorLink="@color/textColorBlack" />
 
         <TextView
             style="@style/text_view_style"
@@ -57,7 +59,7 @@
             android:layout_marginBottom="@dimen/margin_bottom"
             android:gravity="right"
             android:text="@string/made_by_alextroy"
-            android:textColor="@color/text_color_black" />
+            android:textColor="@color/textColorBlack" />
 
     </LinearLayout>
 
