@@ -33,33 +33,30 @@
             android:textStyle="bold" />
 
         <TextView
-
             style="@style/text_view_style"
             android:layout_marginBottom="@dimen/margin_bottom"
             android:autoLink="phone"
-            android:text="@string/phone"
-            android:textColorLink="@color/textColorBlack" />
+            android:text="@string/phone" />
 
         <TextView
             android:id="@+id/udacity_web"
             style="@style/text_view_style"
             android:layout_marginBottom="@dimen/margin_bottom"
             android:autoLink="web"
-            android:text="@string/site"
-            android:textColorLink="@color/textColorBlack" />
+            android:text="@string/site" />
 
         <TextView
             style="@style/text_view_style"
             android:layout_marginBottom="@dimen/margin_bottom_large"
-            android:text="@string/street" />
+            android:text="@string/street"
+            android:autoLink="map"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/margin_bottom"
             android:gravity="right"
-            android:text="@string/made_by_alextroy"
-            android:textColor="@color/textColorBlack" />
+            android:text="@string/made_by_alextroy" />
 
     </LinearLayout>
 
