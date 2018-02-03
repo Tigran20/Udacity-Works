@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:context="com.example.android.helloandroid.MainActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/udacity_back" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_bottom"
+        android:paddingLeft="@dimen/padding_left"
+        android:paddingRight="@dimen/padding_right"
+        android:paddingTop="@dimen/padding_top_large">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:gravity="center"
+            android:text="@string/udacity"
+            android:textColor="@color/udacity_color"
+            android:textSize="@dimen/udacity_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+
+            style="@style/text_view_style"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:text="@string/phone" />
+
+        <TextView
+            style="@style/text_view_style"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:text="@string/site" />
+
+        <TextView
+            style="@style/text_view_style"
+            android:layout_marginBottom="@dimen/margin_bottom_large"
+            android:text="@string/street"
+
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_bottom"
+            android:gravity="right"
+            android:text="@string/made_by_alextroy"
+            android:textColor="@color/text_color_black" />
+
+    </LinearLayout>
+
+</LinearLayout>
