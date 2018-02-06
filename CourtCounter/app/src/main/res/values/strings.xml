@@ -12,5 +12,5 @@
     <string name="teamB_wins">Team B wins</string>
     <string name="draw">Draw</string>
     <string name="winner">winner</string>
-    <string name="enter_your_team_name">Enter your team name</string>
+    <string name="enter_your_team_name_hint">Enter your team name</string>
 </resources>

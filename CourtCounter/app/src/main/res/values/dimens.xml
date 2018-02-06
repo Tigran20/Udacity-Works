@@ -5,6 +5,7 @@
     <dimen name="text_size_normal">14sp</dimen>
     <dimen name="padding_bottom">24dp</dimen>
     <dimen name="text_size_large">56sp</dimen>
+    <dimen name="text_size">40sp</dimen>
     <dimen name="margin_bottom_small">8dp</dimen>
     <dimen name="margin_left_normal">24dp</dimen>
     <dimen name="margin_right_normal">24dp</dimen>
@@ -13,4 +14,10 @@
     <dimen name="marign_right_large">64dp</dimen>
     <dimen name="margin_left_normal_2">26dp</dimen>
     <dimen name="margin_right_normal_2">26dp</dimen>
+    <dimen name="padding_top_16">16dp</dimen>
+    <dimen name="margin_right_24">24dp</dimen>
+    <dimen name="margin_left_24">24dp</dimen>
+    <dimen name="padding_12">12dp</dimen>
+    <dimen name="text_size_26">26sp</dimen>
+    <dimen name="margin_top_150">150dp</dimen>
 </resources>

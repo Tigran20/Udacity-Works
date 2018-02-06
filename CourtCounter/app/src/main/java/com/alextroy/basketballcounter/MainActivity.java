@@ -1,5 +1,6 @@
 package com.alextroy.basketballcounter;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,100 +9,118 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private int scoreTeamA = 0;
-    private int scoreTeamB = 0;
+    private static final String SCORE_TEAM_A = "score_team_a";
+    private static final String SCORE_TEAM_B = "score_team_b";
 
-    private EditText nameTeamA;
-    private EditText nameTeamB;
+    private int mScoreTeamA = 0;
+    private int mScoreTeamB = 0;
 
-    private String nameA;
-    private String nameB;
+    private EditText mNameTeamA;
+    private EditText mNameTeamB;
 
-    private TextView winnerTeam;
+    private String mNameA;
+    private String mNameB;
+
+    private TextView mScoreViewTeamA;
+    private TextView mScoreViewTeamB;
+    private TextView mWinnerTeam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mScoreViewTeamA = findViewById(R.id.team_a_score);
+        mScoreViewTeamB = findViewById(R.id.team_b_score);
+
+        if(savedInstanceState != null) {
+            mScoreTeamA = savedInstanceState.getInt(SCORE_TEAM_A);
+            mScoreTeamB = savedInstanceState.getInt(SCORE_TEAM_B);
+        }
     }
 
     public void addThreeForTeamA(View v) {
-        scoreTeamA = scoreTeamA + 3;
-        displayForTeamA(scoreTeamA);
+        mScoreTeamA = mScoreTeamA + 3;
+        displayForTeamA(mScoreTeamA);
     }
 
     public void addTwoForTeamA(View v) {
-        scoreTeamA = scoreTeamA + 2;
-        displayForTeamA(scoreTeamA);
+        mScoreTeamA = mScoreTeamA + 2;
+        displayForTeamA(mScoreTeamA);
     }
 
     public void addOneForTeamA(View v) {
-        scoreTeamA = scoreTeamA + 1;
-        displayForTeamA(scoreTeamA);
+        mScoreTeamA = mScoreTeamA + 1;
+        displayForTeamA(mScoreTeamA);
     }
 
     public void addThreeForTeamB(View v) {
-        scoreTeamB = scoreTeamB + 3;
-        displayForTeamB(scoreTeamB);
+        mScoreTeamB = mScoreTeamB + 3;
+        displayForTeamB(mScoreTeamB);
     }
 
     public void addTwoForTeamB(View v) {
-        scoreTeamB = scoreTeamB + 2;
-        displayForTeamB(scoreTeamB);
+        mScoreTeamB = mScoreTeamB + 2;
+        displayForTeamB(mScoreTeamB);
     }
 
     public void addOneForTeamB(View v) {
-        scoreTeamB = scoreTeamB + 1;
-        displayForTeamB(scoreTeamB);
+        mScoreTeamB = mScoreTeamB + 1;
+        displayForTeamB(mScoreTeamB);
     }
 
     public void resetScore(View v) {
-        scoreTeamA = 0;
-        scoreTeamB = 0;
-        displayForTeamA(scoreTeamA);
-        displayForTeamB(scoreTeamB);
+        mScoreTeamA = 0;
+        mScoreTeamB = 0;
+        displayForTeamA(mScoreTeamA);
+        displayForTeamB(mScoreTeamB);
         findViewById(R.id.team_winner).setVisibility(View.INVISIBLE);
     }
 
     public void winner(View v) {
-        nameTeamA = findViewById(R.id.name_team_a);
-        nameTeamB = findViewById(R.id.name_team_b);
+        mNameTeamA = findViewById(R.id.name_team_a);
+        mNameTeamB = findViewById(R.id.name_team_b);
 
-        nameA = String.valueOf(nameTeamA.getText());
-        nameB = String.valueOf(nameTeamB.getText());
+        mNameA = String.valueOf(mNameTeamA.getText());
+        mNameB = String.valueOf(mNameTeamB.getText());
 
-        if (scoreTeamB > scoreTeamA) {
-            if (!nameB.isEmpty())
-                winnerTeam("TEAM " + nameB + " WIN");
+        if (mScoreTeamB > mScoreTeamA) {
+            if (!mNameB.isEmpty())
+                winnerTeam("TEAM " + mNameB + " WIN");
             else {
                 winnerTeam("TEAM B WIN");
             }
-        } else if (scoreTeamB < scoreTeamA) {
-            if (!nameA.isEmpty())
-                winnerTeam("TEAM " + nameA + " WIN");
+        } else if (mScoreTeamB < mScoreTeamA) {
+            if (!mNameA.isEmpty())
+                winnerTeam("TEAM " + mNameA + " WIN");
             else {
                 winnerTeam("TEAM A WIN");
             }
-        } else if (scoreTeamA == scoreTeamB) {
+        } else if (mScoreTeamA == mScoreTeamB) {
             winnerTeam("DRAW");
         }
     }
 
     public void displayForTeamA(int score) {
-        TextView scoreView = (TextView) findViewById(R.id.team_a_score);
-        scoreView.setText(String.valueOf(score));
+        mScoreViewTeamA.setText(String.valueOf(score));
     }
 
     public void displayForTeamB(int score) {
-        TextView scoreView = (TextView) findViewById(R.id.team_b_score);
-        scoreView.setText(String.valueOf(score));
+
+        mScoreViewTeamB.setText(String.valueOf(score));
     }
 
     public void winnerTeam(String team_name) {
-        winnerTeam = (TextView) findViewById(R.id.team_winner);
-        winnerTeam.setText(team_name);
+        mWinnerTeam = findViewById(R.id.team_winner);
+        mWinnerTeam.setText(team_name);
         findViewById(R.id.team_winner).setVisibility(View.VISIBLE);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
+        outState.putInt(SCORE_TEAM_A, mScoreTeamA);
+        outState.putInt(SCORE_TEAM_B, mScoreTeamB);
+    }
 }

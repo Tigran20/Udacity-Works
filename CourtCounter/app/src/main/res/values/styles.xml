@@ -4,6 +4,7 @@
         <item name="colorPrimary">#FF9800</item>
         <item name="colorPrimaryDark">#c15a00</item>
         <item name="colorButtonNormal">#ff9800</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 
     <style name="btnStyle">
@@ -14,4 +15,24 @@
         <item name="android:layout_marginRight">@dimen/margin_right_normal</item>
         <item name="android:textColor">@color/color_black</item>
     </style>
+
+    <style name="winnerBtn" parent="Widget.AppCompat.Button">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginRight">@dimen/margin_right_24</item>
+        <item name="android:textColor">@color/color_black</item>
+    </style>
+
+    <style name="resetBtn" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginLeft">@dimen/margin_left_24</item>
+        <item name="android:textColor">@color/color_black</item>
+    </style>
+
+
 </resources>

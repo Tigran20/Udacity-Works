@@ -9,6 +9,7 @@
     <color name="accentMateriaLlight">#dd2c00</color>
     <color name="grey_color">#616161</color>
     <color name="color_black">#000</color>
+    <color name="accent_material_light">#dd2c00</color>
 
 
 </resources>
