@@ -155,7 +155,6 @@ public class Questions extends AppCompatActivity {
             switch (rb.getId()) {
                 case R.id.answer_rb_1:
                     if (mAnswerRB1.isChecked()) {
-//                        mAnswerRB1.setTextColor(Color.GREEN);
                         mAnswerRB2.setEnabled(false);
                         mAnswerRB3.setEnabled(false);
                         mAnswerRB4.setEnabled(false);
@@ -164,11 +163,9 @@ public class Questions extends AppCompatActivity {
                         updateQuestion(mQuestionNumber);
                         updateLL(mQuestionNumber);
                     }
-//                    handlerRb();
                     break;
                 case R.id.answer_rb_2:
                     if (mAnswerRB2.isChecked()) {
-//                        mAnswerRB2.setTextColor(Color.RED);
                         mAnswerRB1.setEnabled(false);
                         mAnswerRB3.setEnabled(false);
                         mAnswerRB4.setEnabled(false);
@@ -177,12 +174,10 @@ public class Questions extends AppCompatActivity {
                         updateQuestion(mQuestionNumber);
                         updateLL(mQuestionNumber);
                     }
-//                    handlerRb();
                     lessHpForRadioButton();
                     break;
                 case R.id.answer_rb_3:
                     if (mAnswerRB3.isChecked()) {
-//                        mAnswerRB3.setTextColor(Color.RED);
                         mAnswerRB1.setEnabled(false);
                         mAnswerRB2.setEnabled(false);
                         mAnswerRB4.setEnabled(false);
@@ -191,12 +186,10 @@ public class Questions extends AppCompatActivity {
                         updateQuestion(mQuestionNumber);
                         updateLL(mQuestionNumber);
                     }
-//                    handlerRb();
                     lessHpForRadioButton();
                     break;
                 case R.id.answer_rb_4:
                     if (mAnswerRB4.isChecked()) {
-//                        mAnswerRB4.setTextColor(Color.RED);
                         mAnswerRB1.setEnabled(false);
                         mAnswerRB2.setEnabled(false);
                         mAnswerRB3.setEnabled(false);
@@ -205,7 +198,6 @@ public class Questions extends AppCompatActivity {
                         updateQuestion(mQuestionNumber);
                         updateLL(mQuestionNumber);
                     }
-//                    handlerRb();
                     lessHpForRadioButton();
                     break;
 
@@ -223,22 +215,18 @@ public class Questions extends AppCompatActivity {
             switch (cb.getId()) {
                 case R.id.answer_cb_1:
                     if (mAnswerCB1.isChecked()) {
-//                        mAnswerCB1.setTextColor(Color.GREEN);
                     }
                     break;
                 case R.id.answer_cb_2:
                     if (mAnswerCB2.isChecked()) {
-//                        mAnswerCB2.setTextColor(Color.RED);
                     }
                     break;
                 case R.id.answer_cb_3:
                     if (mAnswerCB3.isChecked()) {
-//                        mAnswerCB3.setTextColor(Color.GREEN);
                     }
                     break;
                 case R.id.answer_cb_4:
                     if (mAnswerCB4.isChecked()) {
-//                        mAnswerCB4.setTextColor(Color.RED);
                     }
                     break;
             }
@@ -331,25 +319,13 @@ public class Questions extends AppCompatActivity {
     }
 
     private void gameOver() {
-        createAlert((mUserName)
-                + ", "
-                + getString(R.string.game_over)
-                + getString(R.string.your_score)
-                + ""
-                + mScore
-                + getString(R.string.space)
-                + getString(R.string.points));
+        createToast(getString(R.string.game_over));
+        createAlert(getString(R.string.play_again));
     }
 
     private void gameWin() {
-        createAlert((mUserName)
-                + ", "
-                + getString(R.string.game_win)
-                + getString(R.string.your_score)
-                + ""
-                + mScore
-                + getString(R.string.space)
-                + getString(R.string.points));
+        createToast(getString(R.string.game_win));
+        createAlert(getString(R.string.play_again));
     }
 
     @Override
@@ -370,10 +346,24 @@ public class Questions extends AppCompatActivity {
     }
 
 
-    void createAlert(String message) {
+    private void createToast(String message) {
+        Toast.makeText(getApplicationContext(),
+                mUserName
+                        + ", "
+                        + message
+                        + getString(R.string.your_score)
+                        + ""
+                        + mScore
+                        + getString(R.string.space)
+                        + getString(R.string.points),
+                Toast.LENGTH_LONG)
+                .show();
+    }
+
+    private void createAlert(String message) {
         new AlertDialog.Builder(this, R.style.AppCompatAlertDialogStyle)
-                .setMessage(message)
                 .setCancelable(false)
+                .setMessage(message)
                 .setNegativeButton(R.string.exit, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
@@ -401,16 +391,6 @@ public class Questions extends AppCompatActivity {
         super.onSaveInstanceState(outState);
     }
 
-//    public void handlerRb() {
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                mQuestionNumber++;
-//                updateQuestion(mQuestionNumber);
-//                updateLL(mQuestionNumber);
-//            }
-//        }, 300);
-//    }
 
     public void lessHpForRadioButton() {
         mUncorrectAnswer++;
@@ -471,10 +451,9 @@ public class Questions extends AppCompatActivity {
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
-                } else if(mAnswerET.getText().toString().length() == 0) {
+                } else if (mAnswerET.getText().toString().length() == 0) {
                     Toast.makeText(getApplicationContext(), R.string.enter_your_text, Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
@@ -497,7 +476,7 @@ public class Questions extends AppCompatActivity {
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
-                } else if(mAnswerCB1.isChecked() && mAnswerCB2.isChecked() && mAnswerCB3.isChecked() && mAnswerCB4.isChecked()){
+                } else if (mAnswerCB1.isChecked() && mAnswerCB2.isChecked() && mAnswerCB3.isChecked() && mAnswerCB4.isChecked()) {
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
@@ -508,12 +487,9 @@ public class Questions extends AppCompatActivity {
                         hideItems();
                     }
                     mHealthPointsTV.setText(String.valueOf(mHealth));
-                }
-
-                else if(!mAnswerCB1.isChecked() && !mAnswerCB3.isChecked() && !mAnswerCB2.isChecked() && !mAnswerCB4.isChecked()){
+                } else if (!mAnswerCB1.isChecked() && !mAnswerCB3.isChecked() && !mAnswerCB2.isChecked() && !mAnswerCB4.isChecked()) {
                     Toast.makeText(getApplicationContext(), R.string.choose_one_answer, Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     mQuestionNumber++;
                     updateQuestion(mQuestionNumber);
                     updateLL(mQuestionNumber);
@@ -527,9 +503,6 @@ public class Questions extends AppCompatActivity {
                 }
             }
         });
-
-        handler = new Handler();
-
     }
 
     private void hideKeyboard() {
@@ -542,7 +515,6 @@ public class Questions extends AppCompatActivity {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
-
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             View view = getCurrentFocus();
             if (view instanceof EditText) {

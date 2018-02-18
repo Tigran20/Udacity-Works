@@ -95,4 +95,6 @@
     <string name="planet_name">Название планеты</string>
     <string name="enter_your_text">Введите текст</string>
     <string name="choose_one_answer">Выберите ответ</string>
+
+    <string name="play_again">Хотите сыграть снова ?</string>
 </resources>
