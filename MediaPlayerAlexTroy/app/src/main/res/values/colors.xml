@@ -2,6 +2,10 @@
 <resources>
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#868686</color>
+
+    <color name="battonColor">#d30e9479</color>
+    <color name="backgroundColor">#eaeaea</color>
+
 
 </resources>

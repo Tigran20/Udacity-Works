@@ -1,25 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="16dp"
-    android:layout_marginTop="16dp">
+    android:layout_marginLeft="@dimen/margin_left_16"
+    android:layout_marginTop="@dimen/margin_top_16">
 
     <TextView
         android:id="@+id/song_number"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/song_number_list"
         android:layout_height="wrap_content"
-        android:text="1"
         android:textColor="@android:color/black"
-        android:textSize="20sp" />
+        android:textSize="@dimen/number_text_list_18" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_left_8"
         android:layout_toRightOf="@id/song_number"
-        android:orientation="vertical"
-        android:layout_marginLeft="16dp">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/song_title"
@@ -28,8 +26,7 @@
             android:layout_marginBottom="4dp"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/black"
-            android:textSize="20sp"
-            tools:text="My heart will go on" />
+            android:textSize="@dimen/sont_title_list" />
 
         <TextView
             android:id="@+id/song_author"
@@ -38,8 +35,7 @@
             android:layout_marginBottom="5dp"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/darker_gray"
-            android:textSize="18sp"
-            tools:text="Bon Jovi" />
+            android:textSize="@dimen/sont_author_list" />
 
         <View
             android:layout_width="match_parent"
